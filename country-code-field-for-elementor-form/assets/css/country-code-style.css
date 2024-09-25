@@ -1,0 +1,23 @@
+.cfefp-intl-container{
+    --cfefp-intl-tel-button-height: 100%;
+}
+
+.elementor-field-group .cfefp-intl-container.iti{
+    width: 100%;
+}
+
+.elementor-field-group .cfefp-intl-container.iti.elementor-error .iti__country-container{
+   bottom: 23px;
+}
+
+.cfefp-intl-container .iti__country-container{
+    height: var(--cfefp-intl-tel-button-height);
+}
+
+.cfefp-intl-container button.iti__selected-country{
+    background: transparent !important;
+    box-shadow:  unset !important;
+}
+.elementor-field-type-tel .cfefp-intl-container .iti__selected-country-primary:hover{
+    background-color: transparent !important;
+}
