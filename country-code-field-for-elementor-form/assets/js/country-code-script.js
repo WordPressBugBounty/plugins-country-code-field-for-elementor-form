@@ -107,6 +107,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
                 utilsScript: utilsPath,
                 formatOnDisplay: false,
                 formatAsYouType: true,
+                // separateDialCode: true,
                 autoFormat: false,
                 containerClass: 'cfefp-intl-container',
                 useFullscreenPopup: false,

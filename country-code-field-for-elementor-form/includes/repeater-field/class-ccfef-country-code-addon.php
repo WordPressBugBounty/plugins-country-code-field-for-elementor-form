@@ -69,11 +69,11 @@ class CFEFP_COUNTRY_CODE_FIELD {
 	public function register_common_assets() {
 		// Define the errorMap constant at the top of your file
 		$error_map = [
-			__("The phone number you entered is not valid. Please check the format and try again.", "CCFEF"),
-			__("The country code you entered is not recognized. Please ensure it is correct and try again.", "CCFEF"),
-			__("The phone number you entered is too short. Please enter a complete phone number, including the country code.", "CCFEF"),
-			__("The phone number you entered is too long. Please ensure it is in the correct format and try again.", "CCFEF"),
-			__("The phone number you entered is not valid. Please check the format and try again.", "CCFEF")
+			__("The phone number you entered is not valid. Please check the format and try again.", "country-code-for-elementor-form-telephone-field"),
+			__("The country code you entered is not recognized. Please ensure it is correct and try again.", "country-code-for-elementor-form-telephone-field"),
+			__("The phone number you entered is too short. Please enter a complete phone number, including the country code.", "country-code-for-elementor-form-telephone-field"),
+			__("The phone number you entered is too long. Please ensure it is in the correct format and try again.", "country-code-for-elementor-form-telephone-field"),
+			__("The phone number you entered is not valid. Please check the format and try again.", "country-code-for-elementor-form-telephone-field")
 		];
 
 		wp_register_script( 'ccfef-country-code-library-script', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/js/intlTelInput.min.js', array(), CCFEF_VERSION, true );
@@ -128,46 +128,46 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 		$ccfef_default_desc = sprintf(
 			"%s <b>'%s'</b> %s.",
-			esc_html__( 'Set default country code in tel field, like', 'CCFEF' ),
-			esc_html__( 'us', 'CCFEF' ),
-			esc_html__( 'for United States', 'CCFEF' ),
+			esc_html__( 'Set default country code in tel field, like', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'us', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'for United States', 'country-code-for-elementor-form-telephone-field' ),
 		);
 
 		$ccfef_auto_detect_desc = sprintf(
 			'%s <br> To use - <a target="__blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=editor-panel">(UPGRADE TO PRO)</a>',
-			esc_html__( 'Auto select user country using ipapi.co', 'CCFEF' )			
+			esc_html__( 'Auto select user country using ipapi.co', 'country-code-for-elementor-form-telephone-field' )			
 		);
 
 
 		$ccfef_include_desc = sprintf(
 			'%s - <b>%s</b>,<b>%s</b>,<b>%s</b>,<b>%s</b>',
-			esc_html__( 'Display only these countries, add comma separated', 'CCFEF' ),
-			esc_html__( 'ca', 'CCFEF' ),
-			esc_html__( 'in', 'CCFEF' ),
-			esc_html__( 'us', 'CCFEF' ), 
-			esc_html__( 'gb', 'CCFEF' ),
+			esc_html__( 'Display only these countries, add comma separated', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'ca', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'in', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'us', 'country-code-for-elementor-form-telephone-field' ), 
+			esc_html__( 'gb', 'country-code-for-elementor-form-telephone-field' ),
 		);
 
 		$ccfef_prefer_desc = sprintf(
 			'%s To use - <a target="__blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=editor-panel">(UPGRADE TO PRO)</a>',
-			esc_html__( 'The Specified countries will appear at the top of the list.', 'CCFEF' ),			
+			esc_html__( 'The Specified countries will appear at the top of the list.', 'country-code-for-elementor-form-telephone-field' ),			
 		);
 
 		$ccfef_exclude_desc = sprintf(
 			'%s - <b>%s</b>,<b>%s</b><br><br>%s - <a target="__blank" href="' . esc_url( 'https://www.iban.com/country-codes' ) . '">https://www.iban.com/country-codes</a>',
-			esc_html__( 'Exclude some countries, add comma separated', 'CCFEF' ),
-			esc_html__( 'af', 'CCFEF' ),
-			esc_html__( 'pk', 'CCFEF' ),
-			esc_html__( 'Check country codes alpha-2 list here', 'CCFEF' ),
+			esc_html__( 'Exclude some countries, add comma separated', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'af', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'pk', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'Check country codes alpha-2 list here', 'country-code-for-elementor-form-telephone-field' ),
 		);
 
 		$field_controls = array(
 			'ccfef-country-code-field'   => array(
 				'name'         => 'ccfef-country-code-field',
-				'label'        => esc_html__( 'Country Code', 'CCFEF' ),
+				'label'        => esc_html__( 'Country Code', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', 'CCFEF' ),
-				'label_off'    => esc_html__( 'Hide', 'CCFEF' ),
+				'label_on'     => esc_html__( 'Show', 'country-code-for-elementor-form-telephone-field' ),
+				'label_off'    => esc_html__( 'Hide', 'country-code-for-elementor-form-telephone-field' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'condition'    => array(
@@ -180,7 +180,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 			'ccfef-country-code-default' => array(
 				'name'         => 'ccfef-country-code-default',
-				'label'        => esc_html__( 'Default Country', 'CCFEF' ),
+				'label'        => esc_html__( 'Default Country', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'condition'    => array(
 					'field_type'               => 'tel',
@@ -198,7 +198,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 			'ccfef-country-code-include' => array(
 				'name'         => 'ccfef-country-code-include',
-				'label'        => esc_html__( 'Only country', 'CCFEF' ),
+				'label'        => esc_html__( 'Only country', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_include_desc,
 				'condition'    => array(
@@ -215,7 +215,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 		
 			'ccfef-country-code-exclude' => array(
 				'name'         => 'ccfef-country-code-exclude',
-				'label'        => esc_html__( 'Exclude Countries', 'CCFEF' ),
+				'label'        => esc_html__( 'Exclude Countries', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_exclude_desc,
 				'condition'    => array(
@@ -232,10 +232,10 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 			'ccfef-country-code-auto-detect' => array(
 				'name'         => 'ccfef-country-code-auto-detect',
-				'label'        => esc_html__( 'Auto Detect Country', 'CCFEF' ),
+				'label'        => esc_html__( 'Auto Detect Country', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'CCFEF' ),
-				'label_off'    => esc_html__( 'No', 'CCFEF' ),
+				'label_on'     => esc_html__( 'Yes', 'country-code-for-elementor-form-telephone-field' ),
+				'label_off'    => esc_html__( 'No', 'country-code-for-elementor-form-telephone-field' ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'description'  => $ccfef_auto_detect_desc,
@@ -253,7 +253,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 			'ccfef-country-code-prefer'      => array(
 				'name'         => 'ccfef-country-code-prefer',
-				'label'        => esc_html__( 'Preferred Countries', 'CCFEF' ),
+				'label'        => esc_html__( 'Preferred Countries', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_prefer_desc,
 				'condition'    => array(
@@ -274,10 +274,10 @@ class CFEFP_COUNTRY_CODE_FIELD {
 			$condition_field_controls = array(
 			'ccfef-country-code-conditions' => array(
 				'name'         => 'ccfef-country-code-conditions',
-				'label'        => esc_html__( 'Enable Conditions', 'CCFEF' ),
+				'label'        => esc_html__( 'Enable Conditions', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'CCFEF' ),
-				'label_off'    => esc_html__( 'No', 'CCFEF' ),
+				'label_on'     => esc_html__( 'Yes', 'country-code-for-elementor-form-telephone-field' ),
+				'label_off'    => esc_html__( 'No', 'country-code-for-elementor-form-telephone-field' ),
 				'condition'    => array(
 					'field_type' => array( 'text', 'email', 'textarea', 'number', 'select', 'radio', 'checkbox', 'tel'),				
 				),
@@ -340,7 +340,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 	// Elementor Review notice ajax request function
 	public function ccfef_elementor_review_notice() {
 		if ( ! check_ajax_referer( 'ccfef_elementor_review', 'nonce', false ) ) {
-			wp_send_json_error( __( 'Invalid security token sent.', 'CCFEF' ) );
+			wp_send_json_error( __( 'Invalid security token sent.', 'country-code-for-elementor-form-telephone-field' ) );
 			wp_die( '0', 400 );
 		}
 

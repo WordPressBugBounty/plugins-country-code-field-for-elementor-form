@@ -3,13 +3,13 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/
  * License:GPL2
- * Text Domain:CCFEF
- * Elementor tested up to: 3.24.0
- * Elementor Pro tested up to: 3.24.0
+ * Text Domain:country-code-for-elementor-form-telephone-field
+ * Elementor tested up to: 3.25.7
+ * Elementor Pro tested up to: 3.25.3
  *
  * @package ccfef
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.3.1' );
+	define( 'CCFEF_VERSION', '1.3.2' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -79,7 +79,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
 				return false;
 			}
-			load_plugin_textdomain( 'CCFEF', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+			load_plugin_textdomain( 'country-code-for-elementor-form-telephone-field', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 			if ( is_admin() ) {
 				require_once CCFEF_PLUGIN_DIR . 'admin/feedback/ccfef-users-feedback.php';
@@ -152,10 +152,10 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 				// translators: %1$s replace with Country Code For Elementor Form Telephone Field & %2$s replace with Elementor Pro.
 				esc_html__(
 					'%1$s requires %2$s to be installed and activated.',
-					'CCFEF'
+					'country-code-for-elementor-form-telephone-field'
 				),
-				esc_html__( 'Country Code For Elementor Form Telephone Field', 'CCFEF' ),
-				esc_html__( 'Elementor Pro', 'CCFEF' )
+				esc_html__( 'Country Code For Elementor Form Telephone Field', 'country-code-for-elementor-form-telephone-field' ),
+				esc_html__( 'Elementor Pro', 'country-code-for-elementor-form-telephone-field' )
 			);
 			printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
 			deactivate_plugins( plugin_basename( __FILE__ ) );

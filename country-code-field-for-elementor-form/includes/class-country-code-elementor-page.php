@@ -17,8 +17,8 @@ class Country_Code_Elementor_Page {
         if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) && !is_plugin_active( 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php' )) {
             add_submenu_page(
                 'elementor',
-                __('Cool Formkit', 'CCFEF'),
-                __('Cool Formkit', 'CCFEF'),
+                __('Cool Formkit', 'country-code-for-elementor-form-telephone-field'),
+                __('Cool Formkit', 'country-code-for-elementor-form-telephone-field'),
                 'manage_options',
                 'cool-formkit',
                 array($this, 'settings_page_content')

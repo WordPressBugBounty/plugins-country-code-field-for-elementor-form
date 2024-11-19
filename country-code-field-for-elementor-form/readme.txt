@@ -2,9 +2,9 @@
 Contributors: narinder-singh,satindersingh,coolplugins
 Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,14 +111,16 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 
 == Changelog ==
 
-= Version 1.3.1 | Sep 4th, 2024 =
-Added:- Error messages are localized for translation.
-Improved:- Phone number country-wise formatting.
+= Version 1.3.2 | Nov 19th, 2024 =
+Tested upto:** WordPress 6.7 and Elementor Version 3.25.7.
 
+= Version 1.3.1 | Sep 4th, 2024 =
+Improved:- Phone number country-wise formatting.
+Minor:- Error messages are localized for translation.
 
 = Version 1.3 | June 17th, 2024 =
 Added:- Integrated new dashboard.
-Improved:- code improvements and textual changes
+Minor:- code improvements and textual changes
 
 = Version 1.2.0 | May 28th, 2024 =
 Added:- Default country code feature.
