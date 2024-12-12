@@ -136,7 +136,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
 
         Object.keys(itiArr).forEach(key => {
             const iti = itiArr[key];
-            const inputElement = iti.a;
+            const inputElement = iti.telInput;
 
             let previousCountryData = iti.getSelectedCountryData();
             let previousCode = `+${previousCountryData.dialCode}`;
@@ -256,7 +256,8 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
             if (Object.keys(itiArr).length > 0) {
                 Object.keys(itiArr).forEach(data => {
                     const iti = itiArr[data];
-                    const inputTelElement = iti.a;
+              
+                    const inputTelElement = iti.telInput;
 
                     if('' !== inputTelElement.value){
                         inputTelElement.value=inputTelElement.value.replace(/[^0-9+]/g, '');

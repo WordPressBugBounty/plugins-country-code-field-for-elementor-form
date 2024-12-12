@@ -208,25 +208,39 @@ class Country_Code_Elementor_Page {
                                     <p>Show a star rating field inside your form to easily get reviews and feedback from your users.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#signature-field" target="_blank">
                                 <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/signature-field.png'; ?>" alt="Signature Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Signature Field</h4>
                                     <p>Let your website users add their signature while submitting a form on your website using signature field.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=cfef_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#image-radio-checkbox" target="_blank">
+                                <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/image-radio-checkbox.png'; ?>" alt="Image Radio & Checkbox Styles Feature Icon">
+                                <div class="cfk-f-info">
+                                    <h4>Image Radio & Checkbox Styles</h4>
+                                    <p>Customize your forms by adding images and icons into your options, making selections more visually engaging.</p>
+                                </div>
+                            </a>
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#calculator-field" target="_blank">
                                 <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/calculator-field.png'; ?>" alt="Calculator Field Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Calculator Field</h4>
                                     <p>Using Cool FormKit, you can add a calculator field that will show calculations based on form entries.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#button-radio-checkbox" target="_blank">
                                 <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/checkbox-radio-styles.png'; ?>" alt="Checkbox & Radio Button Styler Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Checkbox & Radio Styles</h4>
                                     <p>Style your checkbox and radio button fields in your Elementor form using the Cool FormKit addon.</p>
+                                </div>
+                            </a>
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#label-styler" target="_blank">
+                                <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/form-label-styles.png'; ?>" alt="Form Labels Styles Feature Icon">
+                                <div class="cfk-f-info">
+                                    <h4>Form Labels Styles</h4>
+                                    <p>Make your form cool by adding styles to the labels' visibility inside your Elementor form using the Cool FormKit addon for Elementor.</p>
                                 </div>
                             </a>
                             <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
@@ -241,13 +255,6 @@ class Country_Code_Elementor_Page {
                                 <div class="cfk-f-info">
                                     <h4>Select2 Field</h4>
                                     <p>Turn your dropdown selector into a SELECT2 field that will help your users easily select from a large list in dropdown select option field.</p>
-                                </div>
-                            </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
-                                <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/form-label-styles.png'; ?>" alt="Form Labels Styles Feature Icon">
-                                <div class="cfk-f-info">
-                                    <h4>Form Labels Styles</h4>
-                                    <p>Make your form cool by adding styles to the labels' visibility inside your Elementor form using the Cool FormKit addon for Elementor.</p>
                                 </div>
                             </a>
                         </div>

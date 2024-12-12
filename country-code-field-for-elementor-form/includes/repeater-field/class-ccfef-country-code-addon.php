@@ -76,7 +76,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 			__("The phone number you entered is not valid. Please check the format and try again.", "country-code-for-elementor-form-telephone-field")
 		];
 
-		wp_register_script( 'ccfef-country-code-library-script', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/js/intlTelInput.min.js', array(), CCFEF_VERSION, true );
+		wp_register_script( 'ccfef-country-code-library-script', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/js/intlTelInput.js', array(), CCFEF_VERSION, true );
 		wp_register_script( 'ccfef-country-code-script', CCFEF_PLUGIN_URL . 'assets/js/country-code-script.min.js', array( 'elementor-frontend', 'jquery', 'ccfef-country-code-library-script' ), CCFEF_VERSION, true );
 		wp_register_style( 'ccfef-country-code-library-style', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/css/intlTelInput.min.css', array(), CCFEF_VERSION, 'all' );
 		wp_register_style( 'ccfef-country-code-style', CCFEF_PLUGIN_URL . 'assets/css/country-code-style.min.css', array(), CCFEF_VERSION, 'all' );

@@ -3,12 +3,12 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/
  * License:GPL2
  * Text Domain:country-code-for-elementor-form-telephone-field
- * Elementor tested up to: 3.25.7
+ * Elementor tested up to: 3.25.10
  * Elementor Pro tested up to: 3.25.3
  *
  * @package ccfef
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.3.2' );
+	define( 'CCFEF_VERSION', '1.3.3' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -76,7 +76,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		 * Load plugin text domain for translation
 		 */
 		public function ccfef_plugins_loaded() {
-			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
+			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
 				return false;
 			}
 			load_plugin_textdomain( 'country-code-for-elementor-form-telephone-field', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
@@ -121,6 +121,8 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		 * Include country field add-on register file
 		 */
 		public function ccfef_load_add_on() {
+			load_plugin_textdomain( 'country-code-for-elementor-form-telephone-field', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
 			include CCFEF_PLUGIN_DIR . 'includes/register/class-ccfef-country-code-register.php';
 			CFEFP_COUNTRY_FIELD_REGISTER::get_instance();
 		}
@@ -129,11 +131,18 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		 * Function used to deactivate the plugin if Elementor Pro does not exist
 		 */
 		public function is_elementor_pro_exist() {
-			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
-					add_action( 'admin_notices', array( $this, 'admin_notice_missing_main_plugin' ) );
-					return false;
+			if (
+				is_plugin_active('pro-elements/pro-elements.php') || 
+				is_plugin_active('elementor-pro/elementor-pro.php')
+			) {
+				return true; // At least one plugin is active, the country code plugin can run.
 			}
+		
+			// If neither plugin is active, show an admin notice.
+			add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
+			return false;
 		}
+
 
 	
 		/**
@@ -155,7 +164,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 					'country-code-for-elementor-form-telephone-field'
 				),
 				esc_html__( 'Country Code For Elementor Form Telephone Field', 'country-code-for-elementor-form-telephone-field' ),
-				esc_html__( 'Elementor Pro', 'country-code-for-elementor-form-telephone-field' )
+				esc_html__( 'Elementor Pro', 'country-code-for-elementor-form-telephone-field' ),
 			);
 			printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
 			deactivate_plugins( plugin_basename( __FILE__ ) );

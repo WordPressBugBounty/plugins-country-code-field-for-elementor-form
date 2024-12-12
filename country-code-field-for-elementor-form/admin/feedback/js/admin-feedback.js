@@ -4,7 +4,7 @@
         let plugin_slug = 'country-code-field-for-elementor-form';
         
         $target = $('#the-list').find('[data-slug="'+plugin_name+'"] span.deactivate a');
-        console.log($target);
+ 
         var plugin_deactivate_link = $target.attr('href');
 
         $($target).on('click', function(event){
