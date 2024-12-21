@@ -243,18 +243,18 @@ class Country_Code_Elementor_Page {
                                     <p>Make your form cool by adding styles to the labels' visibility inside your Elementor form using the Cool FormKit addon for Elementor.</p>
                                 </div>
                             </a>
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
+                                <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/select2-field.png'; ?>" alt="Select2 Field Feature Icon">
+                                <div class="cfk-f-info">
+                                    <h4>Select2 Field</h4>
+                                    <p>Turn your dropdown selector into a SELECT2 field that will help your users easily select from a large list in dropdown select option field.</p>
+                                </div>
+                            </a>
                             <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
                                 <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/fields-divider.png'; ?>" alt="Fields Divider or Spacer Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Fields Divider or Spacer</h4>
                                     <p>Divide your form fields with lines or spacers. It is helpful to create multi-section forms inside Elementor.</p>
-                                </div>
-                            </a>
-                            <a class="cfk-feature coming-soon" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_feature&utm_medium=inside&utm_campaign=get-pro&utm_content=feature-list#plugin-features" target="_blank">
-                                <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/select2-field.png'; ?>" alt="Select2 Field Feature Icon">
-                                <div class="cfk-f-info">
-                                    <h4>Select2 Field</h4>
-                                    <p>Turn your dropdown selector into a SELECT2 field that will help your users easily select from a large list in dropdown select option field.</p>
                                 </div>
                             </a>
                         </div>

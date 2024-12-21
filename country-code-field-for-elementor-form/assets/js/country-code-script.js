@@ -50,9 +50,12 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
 
         this.addCountryCodeInputHandler(); // Adds a country code input handler that initializes the international telephone input functionality.
 
+        this.customFlags() // custom load svg flags
+
         this.removeInputTelSpanEle(); // Removes the telephone input span element from the DOM, typically used to clean up after modifications.
 
         this.intlInputValidation(); // Validates the international input fields to ensure they meet specific criteria.
+
     }
 
     /**
@@ -147,6 +150,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
             };
 
             const handleCountryChange = (e) => {
+                this.customFlags();
                 const currentCountryData = iti.getSelectedCountryData();
                 const currentCode = `+${currentCountryData.dialCode}`;
                 if (e.type === 'keydown' || e.type=== 'input') {
@@ -201,6 +205,24 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
         }
     }
 
+    customFlags() {
+        const selectedCountries = this.$element.find('.cfefp-intl-container .iti__country-container .iti__flag:not(.iti__globe)');
+    
+        // Loop through each flag element
+        selectedCountries.each(function() {
+            const selectedCountry = this;  // 'this' refers to the current element in the loop
+            const classList = selectedCountry.className.split(' '); 
+            
+            if (classList[1]) {
+                const selectedCountryFlag = classList[1].split('__')[1]; 
+                const svgFlagPath = CCFEFCustomData.pluginDir + `assets/flags/${selectedCountryFlag}.svg`;
+
+                // Apply the styles dynamically to the current flag
+                selectedCountry.style.backgroundImage = `url('${svgFlagPath}')`;
+            } 
+        });
+    }
+        
     /**
      * Removes the span element with class 'ccfef-editor-intl-input' from the DOM.
      */
@@ -237,7 +259,6 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
             if('' !== defaultCountry){
                 this.defaultCountry[currentId]=defaultCountry;
             }
-
 
             if (!previousIds.includes(currentId)) {
                 this.telId.push({ formId, fieldId, customId: inputId });
@@ -294,6 +315,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
         });
     }
 }
+
 
 jQuery(window).on('elementor/frontend/init', () => {
     const addHandler = ($element) => {

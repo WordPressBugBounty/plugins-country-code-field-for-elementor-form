@@ -3,7 +3,7 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.3.4
+ * Version: 1.3.5
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/
  * License:GPL2
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.3.4' );
+	define( 'CCFEF_VERSION', '1.3.5' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -45,7 +45,6 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		 */
 		private static $instance = null;
 
-		private static $condition_plugin = null;
 		
 		/**
 		 * Get plugin instance.

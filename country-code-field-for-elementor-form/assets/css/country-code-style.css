@@ -21,3 +21,8 @@
 .elementor-field-type-tel .cfefp-intl-container .iti__selected-country-primary:hover{
     background-color: transparent !important;
 }
+.cfefp-intl-container .iti__country-container .iti__flag:not(.iti__globe){
+    height:13px;
+    background-position: 'center';
+    background-size:'cover'; 
+}
