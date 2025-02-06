@@ -4,7 +4,7 @@ Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.3.5
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,12 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 == Upgrade Notice ==
 
 == Changelog ==
+
+= Version 1.3.7 | Feb 06, 2025 =
+Minor:- Textual Changes.
+
+= Version 1.3.6 | Feb 06, 2025 =
+Minor:- Textual Changes.
 
 = Version 1.3.5 | Dec 21th, 2024 =
 Improved:- Country flags are now loaded via SVG for better performance and customization.

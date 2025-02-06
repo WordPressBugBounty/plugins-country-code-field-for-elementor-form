@@ -33,7 +33,7 @@ class Country_Code_Elementor_Page {
         <div class="cfk-wrapper">
             <div class="cfk-header">
                 <div class="cfk-logo">
-                    <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/cool-formkit-logo.png'; ?>" alt="Cool FormKit">
+                    <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/cool-formkit-plugin-logo.png'; ?>" alt="Cool FormKit">
                 </div>
                 <div class="cfk-buttons">
                     <p>Upgrade your form with advanced features and maximum possibilities.</p>
@@ -51,12 +51,12 @@ class Country_Code_Elementor_Page {
                             </picture>
                             <div class="cfk-p-name">
                                 <h2>Country Code For Tel Field</h2>
-                                <p>Now you can display international country code flags within your Elementor form using the Country Code plugin.</p>
-                                <div class="cfk-buttons">
-                                    <a class="button" href="https://coolplugins.net/video/country-code-free/" target="_blank">Watch Video Tutorial</a>
-                                    <a class="button button-secondary" href="https://docs.coolplugins.net/docs/cool-formkit/add-country-code-dropdown-to-tel-field-in-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=setting-page-ccfef-docs" target="_blank">Check Documentation</a>
-                                </div>
+                                <p>Easily display country codes and flags inside the Elementor form phone field.</p>
                             </div>
+                        </div>
+                        <div class="cfk-buttons">
+                            <a class="button" href="https://coolplugins.net/video/country-code-free/" target="_blank">Video Tutorial</a>
+                            <a class="button button-secondary" href="https://docs.coolplugins.net/docs/cool-formkit/add-country-code-dropdown-to-tel-field-in-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=setting-page-ccfef-docs" target="_blank">Check Documentation</a>
                         </div>
                         <div class="cfk-p-features">
                             <div class="cfk-p-feature">
@@ -81,10 +81,12 @@ class Country_Code_Elementor_Page {
                             </div>
                         </div>
                         <div class="cfk-buttons">
-                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-get-pros-cfkef" target="_blank">Get Cool FormKit (All-in-one)</a>
+                            <p>You will get pro features inside.</p>
+                            <br>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-ccfef-get-coolformkit" target="_blank"> Cool FormKit</a>
                         </div>
                     </div>
-                    <div class="cfk-box cfk-right">
+                    <div class="cfk-box cfk-middle">
                         <div class="cfk-p-info">
                             <picture>
                                     <source srcset="<?php echo CCFEF_PLUGIN_URL . 'assets/images/conditional-fields.avif'; ?>">
@@ -92,10 +94,12 @@ class Country_Code_Elementor_Page {
                             </picture>
                             <div class="cfk-p-name">
                                 <h2>Conditional Fields For Elementor Form</h2>
-                                <p>Show or hide Elementor form fields easily based on other fields values selected by user, easily apply conditional logic on Elementor form fields.</p>
-                                <div class="cfk-buttons">
-                                <a target="_blank" class="button" href="<?php 
-                                        if(!empty($plugin_list['conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php'])){
+                                <p>Show or hide Elementor form fields based on other fields values selected by user.</p>
+                            </div>
+                        </div>
+                        <div class="cfk-buttons">
+                            <a target="_blank" class="button" href="<?php 
+                                if(!empty($plugin_list['conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php'])){
                                             if (!is_plugin_active( 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php' ) ){
                                                 ?>
                                                 plugin-install.php?s=Conditional%2520Fields%2520for%2520Elementor%2520Form%2520by%2520coolplugins&tab=search&type=term
@@ -126,10 +130,11 @@ class Country_Code_Elementor_Page {
                                             ?>
                                             Install
                                             <?php
-                                        }
-                                    ?></a>
-                                </div>
-                            </div>
+                                    }?>
+                            </a>
+                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-cfef-docs">
+                                Check Documentation
+                            </a>
                         </div>
                         <div class="cfk-p-features">
                             <div class="cfk-p-feature">
@@ -142,7 +147,7 @@ class Country_Code_Elementor_Page {
                             </div>
                             <div class="cfk-p-feature pro">
                                 <div class="icon-cross">&#10005;</div>
-                                <span>Advanced Operators (contains, empty, starts-with, ends-with)</span>
+                                <span>Contains, Starts-with & More Operators</span>
                             </div>
                             <div class="cfk-p-feature">
                                 <div class="icon-check">&#10003;</div>
@@ -166,10 +171,90 @@ class Country_Code_Elementor_Page {
                             </div>
                         </div>
                         <div class="cfk-buttons">
-                            <p>For pro features.</p>
-                            <a class="button" href="https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-get-pro-cfefp" target="_blank">Get Conditional Fields Pro</a>
+                            <p>You will get pro features inside.</p>
+                            <a class="button" href="https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfefp" target="_blank">Conditional Fields Pro</a>
                             <span>or</span>
-                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-get-pros-cfkef" target="_blank">Get Cool FormKit (All-in-one)</a>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
+                        </div>
+                    </div>
+                    <div class="cfk-box cfk-right">
+                        <div class="cfk-p-info">
+                            <picture>
+                                    <source srcset="<?php //echo CCFEF_PLUGIN_URL . 'assets/images/placeholder.avif'; ?>">
+                                    <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/form-input-mask-icon.png'; ?>">
+                            </picture>
+                            <div class="cfk-p-name">
+                                <h2>Form Input Masks for Elementor Form</h2>
+                                <p>Extend Elementor Pro forms with input masks for phone, date, credit card and more.</p>
+                            </div>
+                        </div>
+                        <div class="cfk-buttons">
+                            <a target="_blank" class="button" href="<?php 
+                                if (!empty($plugin_list['form-masks-for-elementor/form-masks-for-elementor.php'])) {
+                                            if (!is_plugin_active('form-masks-for-elementor/form-masks-for-elementor.php')) {
+                                                // If plugin is not active, provide the install link
+                                                echo esc_url(admin_url('plugin-install.php?s=Form%2520Masks%2520For%2520Elementor%2520By%2520Coolplugins&tab=search&type=term'));
+                                            } else {
+                                                // If plugin is active, provide the tutorial video link
+                                                echo esc_url('https://coolplugins.net/video/form-input-masks/');
+                                            }
+                                        } else {
+                                            // If plugin is not found, provide the install link
+                                            echo esc_url(admin_url('plugin-install.php?s=Form%2520Masks%2520For%2520Elementor%2520By%2520Coolplugins&tab=search&type=term'));
+                                        }
+                                        ?>">
+                                        <?php
+                                        if (!empty($plugin_list['form-masks-for-elementor/form-masks-for-elementor.php'])) {
+                                            if (!is_plugin_active('form-masks-for-elementor/form-masks-for-elementor.php')) {
+                                                // If plugin is not active, display 'Activate'
+                                                echo esc_html__('Activate', 'cfef');
+                                            } else {
+                                                // If plugin is active, display 'Watch Video Tutorial'
+                                                echo esc_html__('Video Tutorial', 'cfef');
+                                            }
+                                        } else {
+                                            // If plugin is not found, display 'Install'
+                                            echo esc_html__('Install', 'cfef');
+                                }
+                                ?>
+                            </a>
+                            <a target="_blank" class="button button-secondary" href="https://coolplugins.net/add-input-masks-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=blog&utm_content=setting-page-ccfef-docs">
+                                Check Documentation
+                            </a>
+                        </div>
+                        <div class="cfk-p-features">
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>Phone Masking</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>US Phone Formatting</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>CPF & CNPJ Masking</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>Currency Formatting</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>Credit Card Masking</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>CEP (Postal Code)</span>
+                            </div>
+                            <div class="cfk-p-feature">
+                                <div class="icon-check">&#10003;</div>
+                                <span>Date and Time Masking</span>
+                            </div>
+                        </div>
+                        <div class="cfk-buttons">
+                            <p>You will get more advanced fields inside:</p>
+                            <a class="button button-secondary" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=get-cfkef" target="_blank">Cool FormKit</a>
                         </div>
                     </div>
                 </div>
@@ -215,7 +300,7 @@ class Country_Code_Elementor_Page {
                                     <p>Let your website users add their signature while submitting a form on your website using signature field.</p>
                                 </div>
                             </a>
-                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=cfef_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#image-radio-checkbox" target="_blank">
+                            <a class="cfk-feature available" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=cfkef-feature&utm_content=feature-list#image-radio-checkbox" target="_blank">
                                 <img src="<?php echo CCFEF_PLUGIN_URL . 'assets/images/image-radio-checkbox.png'; ?>" alt="Image Radio & Checkbox Styles Feature Icon">
                                 <div class="cfk-f-info">
                                     <h4>Image Radio & Checkbox Styles</h4>
@@ -259,7 +344,7 @@ class Country_Code_Elementor_Page {
                             </a>
                         </div>
                         <div class="cfk-buttons">
-                            <a class="button" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-footer#pricing" target="_blank">Get Cool FormKit (Lifetime License)</a>
+                            <a class="button" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=setting-page-footer#pricing" target="_blank">Cool FormKit (Lifetime License)</a>
                             <p>More features & fields coming in regular upcoming updates...</p>
                         </div> 
                     </div>
@@ -272,7 +357,7 @@ class Country_Code_Elementor_Page {
                         <div class="cfk-box">
                             <h3>Links</h3>
                             <div class="cfk-buttons">
-                                <a href="https://coolplugins.net/support/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
+                                <a href="https://my.coolplugins.net/account/support-tickets/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=support&utm_content=important-links" class="button button-secondary" target="_blank">Contact Support</a>
                                 <a href="https://coolplugins.net/about-us/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=about-us&utm_content=important-links" class="button" target="_blank">Meet Cool Plugins Developers</a>
                                 <a href="https://x.com/cool_plugins" class="button" target="_blank">Follow On X</a>
                             </div>
@@ -331,6 +416,9 @@ class Country_Code_Elementor_Page {
                 gap: 15px;
                 align-items: center;
                 flex-wrap: wrap;
+            }
+            .cfk-buttons p{
+                font-weight:bold;
             }
             .cfk-wrapper .button {
                 padding: 10px 14px;
@@ -397,10 +485,13 @@ class Country_Code_Elementor_Page {
                 gap: 25px;
             }
             .cfk-plugins .cfk-left {
-                width: 40%;
+                width: calc(33.33% - 16px);
             }
             .cfk-plugins .cfk-right {
-                width: 60%;
+                width: calc(33.33% - 16px);
+            }
+            .cfk-plugins .cfk-middle {
+                width: calc(33.33% - 16px);
             }
             .cfk-p-info {
                 display: flex;
@@ -450,13 +541,13 @@ class Country_Code_Elementor_Page {
             }
             .cfk-promo {
                 display: flex;
-                gap: 25px;
+                gap: 24px;
             }
             .cfk-promo .cfk-left {
-                width: 70%;
+                width: calc(67% - 12px);
             }
             .cfk-promo .cfk-right {
-                width: 30%;
+                width: calc(33% - 12px);
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
