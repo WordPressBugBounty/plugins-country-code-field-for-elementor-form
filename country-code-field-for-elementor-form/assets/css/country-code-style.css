@@ -6,7 +6,15 @@
     width: 100%;
 }
 
+.ehp-form__field-group .cfefp-intl-container.iti{
+    width: 100%;
+}
+
 .elementor-field-group .cfefp-intl-container.iti.elementor-error .iti__country-container{
+   bottom: 23px;
+}
+
+.ehp-form__field-group .cfefp-intl-container.iti.elementor-error .iti__country-container{
    bottom: 23px;
 }
 
@@ -23,6 +31,21 @@
 }
 .cfefp-intl-container .iti__country-container .iti__flag:not(.iti__globe){
     height:13px;
-    background-position: 'center';
-    background-size:'cover'; 
+    background-position: center;
+    background-size:cover; 
+}
+.is-field-type-ehp-tel.has-width-100 .iti input{
+    width: 100%;
+}
+.is-field-type-ehp-tel.has-width-50 .iti input{
+    width: 50%;
+}
+.is-field-type-ehp-tel.has-width-33 .iti input{
+    width: 33%;
+}
+
+.iti--allow-dropdown input.iti__tel-input, .iti--allow-dropdown input.iti__tel-input[type="ehp-tel"], .iti--allow-dropdown input.iti__tel-input[type="text"] {
+    padding-right: var(--iti-input-padding);
+    padding-left: var(--iti-selected-country-arrow-padding);
+    margin-left: 0;
 }

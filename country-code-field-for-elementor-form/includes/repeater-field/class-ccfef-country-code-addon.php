@@ -43,7 +43,9 @@ class CFEFP_COUNTRY_CODE_FIELD {
 	public function __construct() {
 		$this->register_common_assets();
 		add_action( 'elementor_pro/forms/render_field/tel', array( $this, 'elementor_form_tel_field_rendering' ), 9, 3 );
+		add_action( 'hello_plus/forms/render_field/ehp-tel', array( $this, 'elementor_form_tel_field_rendering' ), 20, 3 );
 		add_action( 'elementor/element/form/section_form_fields/before_section_end', array( $this, 'update_controls' ), 100, 2);
+		add_action( 'elementor/element/ehp-form/section_form_fields/before_section_end', array( $this, 'update_controls' ), 100, 2);
 		add_action( 'elementor/preview/init', array( $this, 'editor_inline_JS' ) );
 		add_action( 'elementor/frontend/after_enqueue_scripts', array( $this, 'frontend_assets' ) );
 		add_action( 'elementor/editor/before_enqueue_styles', array( $this, 'editor_assets') );
@@ -51,13 +53,42 @@ class CFEFP_COUNTRY_CODE_FIELD {
 	}
 
 	public function elementor_form_tel_field_rendering( $item, $item_index, $form ) {
-		if ( 'tel' === $item['field_type'] && 'yes' === $item['ccfef-country-code-field'] ) {
-			$default_country    = $item['ccfef-country-code-default'];
+		if ( ( 'ehp-tel' === $item['field_type'] || 'tel' === $item['field_type'] ) && 'yes' === $item['ccfef-country-code-field'] ) {
+			// Get and sanitize the default country.
+			$default_country = $item['ccfef-country-code-default'];
+			if ( preg_match( '/[^a-zA-Z]/', $default_country ) ) {
+				$default_country = 'NAN';
+			}
+			
 			$include_countries  = $item['ccfef-country-code-include'];
-			$excluded_countries = '' === $item['ccfef-country-code-include'] ? $item['ccfef-country-code-exclude'] : '';
-			echo '<span class="ccfef-editor-intl-input" data-id="form-field-' . esc_attr( $item['custom_id'] ) . '" data-field-id="' . esc_attr( $item['_id'] ) . '" data-default-country="' . esc_attr( $default_country ) . '" data-include-countries="' . esc_attr( $include_countries ) . '" data-exclude-countries="' . esc_attr( $excluded_countries ). '" style="display: none;"></span>';
+			$excluded_countries = $item['ccfef-country-code-exclude'];
+		
+			// Convert comma-separated strings to arrays if needed.
+			if ( is_string( $include_countries ) ) {
+				$include_countries = array_map( 'trim', explode( ',', $include_countries ) );
+			}
+			if ( is_string( $excluded_countries ) ) {
+				$excluded_countries = array_map( 'trim', explode( ',', $excluded_countries ) );
+			}
+			
+			// --- Added code to set data-common-countries ---
+			$include_countries_orig  = $include_countries;
+			$excluded_countries_orig = $excluded_countries;
+			sort( $include_countries_orig );
+			sort( $excluded_countries_orig );
+			$commonAttr = ( $include_countries_orig === $excluded_countries_orig ) ? 'same' : '';
+			// --- End of added code ---
+		
+			// Convert the include countries array back to a comma-separated string for the data attribute.
+			$include_countries_str = implode( ',', $include_countries );
+		
+			echo '<span class="ccfef-editor-intl-input" data-id="form-field-' . esc_attr( $item['custom_id'] ) . '" data-field-id="' . esc_attr( $item['_id'] ) . '" data-default-country="' . esc_attr( $default_country ) . '" data-include-countries="' . esc_attr( $include_countries_str ) . '" data-exclude-countries="' . esc_attr( implode( ',', $excluded_countries ) ) . '" data-common-countries="' . esc_attr( $commonAttr ) . '" style="display: none;"></span>';
 		}
+		
 	}
+	
+	
+	
 
 	public function editor_inline_JS() {
 		wp_enqueue_script( 'ccfef-country-code-editor-script', CCFEF_PLUGIN_URL . 'assets/js/ccfef-content-template.min.js', array(), CCFEF_VERSION, true ); // for AOS animation
@@ -78,11 +109,20 @@ class CFEFP_COUNTRY_CODE_FIELD {
 
 		wp_register_script( 'ccfef-country-code-library-script', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/js/intlTelInput.js', array(), CCFEF_VERSION, true );
 		wp_register_script( 'ccfef-country-code-script', CCFEF_PLUGIN_URL . 'assets/js/country-code-script.min.js', array( 'elementor-frontend', 'jquery', 'ccfef-country-code-library-script' ), CCFEF_VERSION, true );
+		wp_register_script( 'ccfef-country-code-script-hello', CCFEF_PLUGIN_URL . 'assets/js/country-code-script-hello.min.js', array( 'elementor-frontend', 'jquery', 'ccfef-country-code-library-script' ), CCFEF_VERSION, true );
 		wp_register_style( 'ccfef-country-code-library-style', CCFEF_PLUGIN_URL . 'assets/intl-tel-input/css/intlTelInput.min.css', array(), CCFEF_VERSION, 'all' );
 		wp_register_style( 'ccfef-country-code-style', CCFEF_PLUGIN_URL . 'assets/css/country-code-style.min.css', array(), CCFEF_VERSION, 'all' );
 
 		wp_localize_script(
 			'ccfef-country-code-script',
+			'CCFEFCustomData',
+			array(
+				'pluginDir' => CCFEF_PLUGIN_URL,
+				'errorMap'  => $error_map, 
+			)	
+		);
+		wp_localize_script(
+			'ccfef-country-code-script-hello',
 			'CCFEFCustomData',
 			array(
 				'pluginDir' => CCFEF_PLUGIN_URL,
@@ -105,6 +145,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 	public function frontend_assets() {
 		wp_enqueue_script( 'ccfef-country-code-library-script');
 		wp_enqueue_script( 'ccfef-country-code-script');
+		wp_enqueue_script( 'ccfef-country-code-script-hello');
 		wp_enqueue_style( 'ccfef-country-code-library-style');
 		wp_enqueue_style( 'ccfef-country-code-style');	    
 	}
@@ -129,8 +170,8 @@ class CFEFP_COUNTRY_CODE_FIELD {
 		$ccfef_default_desc = sprintf(
 			"%s <b>'%s'</b> %s.",
 			esc_html__( 'Set default country code in tel field, like', 'country-code-for-elementor-form-telephone-field' ),
-			esc_html__( 'us', 'country-code-for-elementor-form-telephone-field' ),
-			esc_html__( 'for United States', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'in', 'country-code-for-elementor-form-telephone-field' ),
+			esc_html__( 'for India', 'country-code-for-elementor-form-telephone-field' ),
 		);
 
 		$ccfef_auto_detect_desc = sprintf(
@@ -171,7 +212,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'condition'    => array(
-					'field_type' => 'tel',
+					'field_type' => array('tel', 'ehp-tel'),
 				),
 				'tab'          => 'content',
 				'inner_tab'    => 'form_fields_content_tab',
@@ -183,11 +224,11 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'label'        => esc_html__( 'Default Country', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'condition'    => array(
-					'field_type'               => 'tel',
+					'field_type'               => array('tel', 'ehp-tel'),
 					'ccfef-country-code-field' => 'yes',
 				),
 				'description'  => $ccfef_default_desc,
-				'default'      => 'us',
+				'default'      => 'in',
 				'tab'          => 'content',
 				'inner_tab'    => 'form_fields_content_tab',
 				'tabs_wrapper' => 'form_fields_tabs',
@@ -202,7 +243,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_include_desc,
 				'condition'    => array(
-					'field_type'               => 'tel',
+					'field_type'               => array('tel', 'ehp-tel'),
 					'ccfef-country-code-field' => 'yes',
 				),
 				'tab'          => 'content',
@@ -219,7 +260,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_exclude_desc,
 				'condition'    => array(
-					'field_type'               => 'tel',
+					'field_type'               => array('tel', 'ehp-tel'),
 					'ccfef-country-code-field' => 'yes',
 				),
 				'tab'          => 'content',
@@ -231,25 +272,27 @@ class CFEFP_COUNTRY_CODE_FIELD {
 			),
 
 			'ccfef-country-code-auto-detect' => array(
-				'name'         => 'ccfef-country-code-auto-detect',
-				'label'        => esc_html__( 'Auto Detect Country', 'country-code-for-elementor-form-telephone-field' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'country-code-for-elementor-form-telephone-field' ),
-				'label_off'    => esc_html__( 'No', 'country-code-for-elementor-form-telephone-field' ),
-				'return_value' => 'yes',
-				'default'      => 'no',
-				'description'  => $ccfef_auto_detect_desc,
-				'condition'    => array(
-					'field_type'               => 'tel',
-					'ccfef-country-code-field' => 'yes',
-				),
-				'tab'          => 'content',
-				'inner_tab'    => 'form_fields_content_tab',
-				'tabs_wrapper' => 'form_fields_tabs',
-				'ai'           => array(
-					'active' => false,
-				),			
-			),
+		'name'         => 'ccfef-country-code-auto-detect',
+		'label'        => esc_html__( 'Auto Detect Country', 'country-code-for-elementor-form-telephone-field' ),
+		'type'         => \Elementor\Controls_Manager::SWITCHER,
+		'label_on'     => esc_html__( 'Yes', 'country-code-for-elementor-form-telephone-field' ),
+		'label_off'    => esc_html__( 'No', 'country-code-for-elementor-form-telephone-field' ),
+		'return_value' => 'yes',
+		'default'      => 'no',
+		'description'  => $ccfef_auto_detect_desc,
+		'condition'    => array(
+			'field_type'               => array('tel', 'ehp-tel'),
+			'ccfef-country-code-field' => 'yes',
+		),
+		'tab'          => 'content',
+		'inner_tab'    => 'form_fields_content_tab',
+		'tabs_wrapper' => 'form_fields_tabs',
+		'ai'           => array(
+			'active' => false,
+		),
+		'disabled'     => true, // This ensures the control is always disabled.
+),
+
 
 			'ccfef-country-code-prefer'      => array(
 				'name'         => 'ccfef-country-code-prefer',
@@ -257,7 +300,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_prefer_desc,
 				'condition'    => array(
-					'field_type'               => 'tel',
+					'field_type'               => array('tel', 'ehp-tel'),
 					'ccfef-country-code-field' => 'yes',
 				),
 				'tab'          => 'content',

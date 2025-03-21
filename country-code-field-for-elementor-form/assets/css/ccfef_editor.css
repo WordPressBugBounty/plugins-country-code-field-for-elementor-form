@@ -68,3 +68,13 @@
   line-height: 1.4 !important;
   color: var(--e-a-color-txt-muted) !important;
 }
+.elementor-control-ccfef-country-code-auto-detect .elementor-control-content .elementor-control-field .elementor-control-input-wrapper .elementor-switch{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.elementor-control-ccfef-country-code-prefer .elementor-control-content .elementor-control-field{
+  pointer-events: none;
+  opacity: 0.5;
+}
+

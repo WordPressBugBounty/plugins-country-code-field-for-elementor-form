@@ -2,9 +2,9 @@
 Contributors: narinder-singh,satindersingh,coolplugins
 Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 7.2
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,12 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 == Upgrade Notice ==
 
 == Changelog ==
+
+= Version 1.3.9 | Mar 21, 2025 =
+Fixed: Wrong Country Code.
+Improved:- Exclude Country Settings.
+Tested upto: Elementor Version 3.28.0.
+Tested upto: Elementor Pro Version 3.28.0.
 
 = Version 1.3.8 | Feb 11, 2025 =
 Minor:- Textual Changes.
