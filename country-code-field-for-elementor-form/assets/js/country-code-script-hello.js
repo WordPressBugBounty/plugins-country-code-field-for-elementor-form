@@ -42,6 +42,8 @@ class CCFEF_HELLO extends elementorModules.frontend.handlers.Base {
 
         this.defaultCountry = {};
 
+        this.commonCountries = {}; // NEW: Object to store flag if common-countries === 'same'
+
         this.iti = {}; // Object to store international telephone input instances
 
         this.getIntlUserData(); // Retrieves international telephone input data from the DOM and stores them for further processing.
@@ -105,31 +107,86 @@ class CCFEF_HELLO extends elementorModules.frontend.handlers.Base {
             }
 
 
-            const iti = window.intlTelInput(telFIeld, {
-                initialCountry: defaultCountry,
-                utilsScript: utilsPath,
-                formatOnDisplay: false,
-                formatAsYouType: true,
-                // separateDialCode: true,
-                autoFormat: false,
-                containerClass: 'cfefp-intl-container',
-                useFullscreenPopup: false,
-                onlyCountries: includeCountries,
-                excludeCountries: excludeCountries,
-                customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
-                    let placeHolder = selectedCountryPlaceholder;
-                    if ('in' === selectedCountryData.iso2) {
-                        placeHolder = selectedCountryPlaceholder.replace(/^0+/, '');
-                    };
-                    const placeholderText = `+${selectedCountryData.dialCode} ${placeHolder}`;
-                    return placeholderText.replace(/\s/g, '');
-                },
-            });
-    
-            telFIeld.removeAttribute('pattern');
-            this.iti[formId + widgetId] = iti;
+            const self = this; // optional if you want to be explicit
+           const iti = window.intlTelInput(telFIeld, {
+            initialCountry: defaultCountry,
+            utilsScript: utilsPath,
+            formatOnDisplay: false,
+            formatAsYouType: true,
+            autoFormat: false,
+            containerClass: 'cfefp-intl-container',
+            useFullscreenPopup: false,
+            onlyCountries: includeCountries,
+            excludeCountries: excludeCountries,
+            customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
+        // Using arrow function preserves 'this' from the outer scope (CCFEF_HELLO instance)
+        if (this.commonCountries[uniqueId]) {
+            return "No country found";
         }
+        if (!selectedCountryData || !selectedCountryPlaceholder || !selectedCountryData.dialCode) {
+            return "No country found";
+        }
+        let placeHolder = selectedCountryPlaceholder;
+        if ('in' === selectedCountryData.iso2) {
+            placeHolder = selectedCountryPlaceholder.replace(/^0+/, '');
+        }
+        const placeholderText = `+${selectedCountryData.dialCode} ${placeHolder}`;
+        return placeholderText.replace(/\s/g, '');
+    },
+});
+
+    
+const intlSpan = document.querySelector(`.elementor-widget.elementor-widget-form[data-id="${formId}"] .ccfef-editor-intl-input[data-field-id="${widgetId}"]`);
+const commonAttr = intlSpan ? intlSpan.getAttribute('data-common-countries') : '';
+if ('same' === commonAttr && this.commonCountries[uniqueId] && '' !== includeCountries && '' !== excludeCountries) {
+    const countryList = iti.countryList;
+    if (countryList && countryList.classList.contains('iti__country-list')) {
+        countryList.style.display = 'none';
     }
+}
+ else {
+    // Filter the country list: show only the countries that are in includeCountries and not in excludeCountries.
+    const countryList = iti.countryList;
+if (countryList && countryList.classList.contains('iti__country-list')) {
+// Select all individual country items.
+const countryItems = countryList.querySelectorAll('.iti__country');
+
+// Hide items if they are in the excludeCountries list.
+countryItems.forEach(function(item) {
+const countryCode = item.getAttribute('data-country-code');
+if (excludeCountries.includes(countryCode)) {
+item.style.display = 'none';
+}
+});
+
+// Get the remaining visible country items.
+const visibleCountries = Array.from(countryItems).filter(item => item.style.display !== 'none');
+
+// Filter those visible items that are present in includeCountries.
+const includedVisibleCountries = visibleCountries.filter(item => {
+const countryCode = item.getAttribute('data-country-code');
+return includeCountries.includes(countryCode);
+});
+
+// If there are any visible items in the include list, select the first one.
+if (includedVisibleCountries.length > 0) {
+const selectedItem = includedVisibleCountries.find(item => item.getAttribute('aria-selected') === 'true');
+if (!selectedItem) {
+const firstItem = includedVisibleCountries[0];
+firstItem.setAttribute('aria-selected', 'true');
+// Update the intlTelInput instance so that the country selection is reflected in the field.
+const newCountryCode = firstItem.getAttribute('data-country-code');
+iti.setCountry(newCountryCode);
+}
+}
+}
+
+}
+
+telFIeld.removeAttribute('pattern');
+this.iti[formId + widgetId] = iti;
+}
+}
 
     /**
      * Method to handle country code input.
@@ -241,20 +298,43 @@ class CCFEF_HELLO extends elementorModules.frontend.handlers.Base {
             const includeCountries=element.data('include-countries');
             const excludeCountries=element.data('exclude-countries');
             const defaultCountry=element.data('defaultCountry');
+            const commonAttr=element.data('common-countries');
             const inputId = element.data('id');
             const fieldId = element.data('field-id');
             const formId = element.closest('.elementor-element.elementor-widget-ehp-form').data('id');
             
             const currentId = `${formId}${fieldId}`;
 
-            if('' !== includeCountries){
-                const splitIncludeCountries=includeCountries.split(',');
-                this.includeCountries[currentId]=splitIncludeCountries;
+            if ('same' === commonAttr && '' === includeCountries && '' !== excludeCountries) {
+                // NEW: Store flag for use in the custom placeholder function
+                this.commonCountries[currentId] = true;
+            } else if('' !== includeCountries){
+                if(isNaN(includeCountries)){
+                    const splitIncludeCountries=includeCountries.split(',');
+                    this.includeCountries[currentId]=splitIncludeCountries;
+                }
             }
             
             if('' !== excludeCountries){
-                const splitExcludeCountries=excludeCountries.split(',');
-                this.excludeCountries[currentId]=splitExcludeCountries;
+                if(isNaN(excludeCountries)){
+                    const splitExcludeCountries=excludeCountries.split(',');
+                    this.excludeCountries[currentId]=splitExcludeCountries;
+                }
+            }
+
+             // NEW: If commonAttr is not 'same' but all values in includeCountries are also present in excludeCountries, set commonCountries flag
+             if ('same' !== commonAttr && '' !== includeCountries && '' !== excludeCountries) {
+                if(isNaN(includeCountries)){
+                    const includeArray = includeCountries.split(',').map(item => item.trim());
+            
+               if(isNaN(excludeCountries)){
+               const excludeArray = excludeCountries.split(',').map(item => item.trim());
+                const allIncludedPresent = includeArray.every(country => excludeArray.includes(country));
+                if (allIncludedPresent) {
+                        this.commonCountries[currentId] = true;
+                    }
+                }
+            }
             }
 
             if('' !== defaultCountry){

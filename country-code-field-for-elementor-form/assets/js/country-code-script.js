@@ -326,12 +326,14 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
                     if(isNaN(includeCountries)){
                         const includeArray = includeCountries.split(',').map(item => item.trim());
                 
+                   if(isNaN(excludeCountries)){
                     const excludeArray = excludeCountries.split(',').map(item => item.trim());
                     const allIncludedPresent = includeArray.every(country => excludeArray.includes(country));
                     if (allIncludedPresent) {
                             this.commonCountries[currentId] = true;
                         }
                     }
+                }
                 }
                 
                 if ('' !== defaultCountry) {
