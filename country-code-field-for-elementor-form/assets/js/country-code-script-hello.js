@@ -131,7 +131,7 @@ class CCFEF_HELLO extends elementorModules.frontend.handlers.Base {
             placeHolder = selectedCountryPlaceholder.replace(/^0+/, '');
         }
         const placeholderText = `+${selectedCountryData.dialCode} ${placeHolder}`;
-        return placeholderText.replace(/\s/g, '');
+        return placeholderText;
     },
 });
 

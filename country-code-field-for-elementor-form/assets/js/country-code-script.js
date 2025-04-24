@@ -180,7 +180,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
                     }
                     
                     const placeholderText = `+${selectedCountryData.dialCode} ${placeHolder}`;
-                    return placeholderText.replace(/\s/g, '');
+                    return placeholderText;
                 },            
             });
             

@@ -2,9 +2,9 @@
 Contributors: narinder-singh,satindersingh,coolplugins
 Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 1.3.10
+Stable tag: 1.3.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,7 @@ Now, users can easily pick their country code, ensuring their phone numbers are 
 - **Selective Exclusion**: Remove specific countries from the country code dropdown.
 - **Enhanced Usability**: Improve form usability and data accuracy with precise formatting.
 - **Default Setting**: Set a default country code for convenience.
+- **Compatibility with Hello Plus**: Country Code For Elementor Form Telephone Field is now fully compatible with Hello Plus, making it easy to add a country code dropdown to telephone fields in Hello Plus forms built inside Elementor.
 
 Upgrade your Elementor forms today and optimize user submissions with the **Country Code for Elementor Form Telephone Field** plugin!
 
@@ -89,6 +90,9 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 ** How do I update the plugin to the latest version?**
  You can update the plugin through your WordPress dashboard, where you'll be notified when a new version is available. Simply follow the update prompts to install the latest version.
 
+** How can I add a country code to the phone field in Elementor Free? **
+ Use the Country Code For Elementor Form Telephone Field plugin to add a country code dropdown to tel fields in Elementor Free forms. This helps users enter their numbers correctly, without the need for Elementor Pro.
+
 == Installation ==
 
 1. **Install the Plugin:**
@@ -110,6 +114,10 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 == Upgrade Notice ==
 
 == Changelog ==
+
+= Version 1.3.11 | Apr 24, 2025 =
+Minor:- Textual Changes.
+Fixed:- Placeholder format issue.
 
 = Version 1.3.10 | Apr 1, 2025 =
 Added:- Compatibilty with Hello Plus Form
