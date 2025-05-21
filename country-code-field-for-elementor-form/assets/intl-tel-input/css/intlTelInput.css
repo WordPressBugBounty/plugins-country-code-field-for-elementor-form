@@ -193,6 +193,10 @@
 }
 .iti .iti__selected-dial-code {
   margin-left: 4px;
+  line-height: 0px;
+    margin-top: -4px;
+    font-size: 15px;
+    font-weight: 500;
 }
 [dir=rtl] .iti .iti__selected-dial-code {
   margin-left: 0;

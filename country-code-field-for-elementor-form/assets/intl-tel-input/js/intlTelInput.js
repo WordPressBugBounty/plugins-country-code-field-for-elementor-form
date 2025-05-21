@@ -1742,9 +1742,9 @@ var factoryOutput = (() => {
           wrapper
         );
         this.selectedCountry = createEl(
-          "button",
+          "div",
           {
-            type: "button",
+            type: "div",
             class: "iti__selected-country",
             ...allowDropdown && {
               "aria-expanded": "false",

@@ -62,7 +62,9 @@ class CFEFP_COUNTRY_CODE_FIELD {
 			
 			$include_countries  = $item['ccfef-country-code-include'];
 			$excluded_countries = $item['ccfef-country-code-exclude'];
-		
+			$dial_code_visibility = $item['ccfef-dial-code-visibility'];
+			$strict_mode = $item['ccfef-strict-mode'];
+
 			// Convert comma-separated strings to arrays if needed.
 			if ( is_string( $include_countries ) ) {
 				$include_countries = array_map( 'trim', explode( ',', $include_countries ) );
@@ -82,7 +84,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 			// Convert the include countries array back to a comma-separated string for the data attribute.
 			$include_countries_str = implode( ',', $include_countries );
 		
-			echo '<span class="ccfef-editor-intl-input" data-id="form-field-' . esc_attr( $item['custom_id'] ) . '" data-field-id="' . esc_attr( $item['_id'] ) . '" data-default-country="' . esc_attr( $default_country ) . '" data-include-countries="' . esc_attr( $include_countries_str ) . '" data-exclude-countries="' . esc_attr( implode( ',', $excluded_countries ) ) . '" data-common-countries="' . esc_attr( $commonAttr ) . '" style="display: none;"></span>';
+			echo '<span class="ccfef-editor-intl-input" data-id="form-field-' . esc_attr( $item['custom_id'] ) . '" data-field-id="' . esc_attr( $item['_id'] ) . '" data-default-country="' . esc_attr( $default_country ) . '" data-include-countries="' . esc_attr( $include_countries_str ) . '" data-exclude-countries="' . esc_attr( implode( ',', $excluded_countries ) ) . '" data-dial-code-visibility="' . esc_attr( $dial_code_visibility ) . '" data-strict-mode="' . esc_attr( $strict_mode ) . '" style="display: none;"></span>';
 		}
 		
 	}
@@ -259,6 +261,55 @@ class CFEFP_COUNTRY_CODE_FIELD {
 				'label'        => esc_html__( 'Exclude Countries', 'country-code-for-elementor-form-telephone-field' ),
 				'type'         => \Elementor\Controls_Manager::TEXT,
 				'description'  => $ccfef_exclude_desc,
+				'condition'    => array(
+					'field_type'               => array('tel', 'ehp-tel'),
+					'ccfef-country-code-field' => 'yes',
+				),
+				'tab'          => 'content',
+				'inner_tab'    => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
+				'ai'           => array(
+					'active' => false,
+				),
+			),
+			'ccfef-dial-code-visibility' => array(
+				'name'         => 'ccfef-dial-code-visibility',
+				'label'        => esc_html__( 'Dial Code Visibility', 'country-code-for-elementor-form-telephone-field' ),
+				'type'         => \Elementor\Controls_Manager::CHOOSE,
+				'options'      => array(
+					'show'     => array(
+						'title' => esc_html__( 'Show', 'country-code-for-elementor-form-telephone-field' ),
+						'icon'  => 'far fa-eye',
+					),
+					'hide'     => array(
+						'title' => esc_html__( 'Hide', 'country-code-for-elementor-form-telephone-field' ),
+						'icon'  => 'far fa-eye-slash',
+					),
+					'separate' => array(
+						'title' => esc_html__( 'Separate', 'country-code-for-elementor-form-telephone-field' ),
+						'icon'  => 'fas fa-arrows-alt-h',
+					),
+				),
+				'default'      => 'show',
+				'condition'    => array(
+					'field_type'               => array('tel', 'ehp-tel'),
+					'ccfef-country-code-field' => 'yes',
+				),
+				'tab'          => 'content',
+				'inner_tab'    => 'form_fields_content_tab',
+				'tabs_wrapper' => 'form_fields_tabs',
+				'ai'           => array(
+					'active' => false,
+				),
+			),
+			'ccfef-strict-mode' => array(
+				'name'         => 'ccfef-strict-mode',
+				'label'        => esc_html__( 'Strict Mode', 'country-code-for-elementor-form-telephone-field' ),
+				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'country-code-for-elementor-form-telephone-field' ),
+				'label_off'    => esc_html__( 'No', 'country-code-for-elementor-form-telephone-field' ),
+				'return_value' => 'yes',
+				'default'      => 'no',
 				'condition'    => array(
 					'field_type'               => array('tel', 'ehp-tel'),
 					'ccfef-country-code-field' => 'yes',

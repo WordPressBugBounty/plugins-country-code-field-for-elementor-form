@@ -2,9 +2,9 @@
 Contributors: narinder-singh,satindersingh,coolplugins
 Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 6.8.1
 Requires PHP: 7.2
-Stable tag: 1.3.11
+Stable tag: 1.3.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,12 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 
 == Changelog ==
 
+= Version 1.3.12 | May 21, 2025 =
+Added:- Strict Mode.
+Added:- Added display options for the country field dial code — users can now choose to hide it, show it inline, or display it separately.
+Tested upto:- Elementor Version 3.29.0.
+Tested upto:- Elementor Pro Version 3.29.0.
+
 = Version 1.3.11 | Apr 24, 2025 =
 Minor:- Textual Changes.
 Fixed:- Placeholder format issue.
@@ -126,8 +132,8 @@ Improved:- Exclude Country Settings.
 
 = Version 1.3.9 | Mar 21, 2025 =
 Improved:- Exclude Country Settings.
-Tested upto: Elementor Version 3.28.0.
-Tested upto: Elementor Pro Version 3.28.0.
+Tested upto:- Elementor Version 3.28.0.
+Tested upto:- Elementor Pro Version 3.28.0.
 
 = Version 1.3.8 | Feb 11, 2025 =
 Minor:- Textual Changes.

@@ -42,6 +42,11 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
 
         this.defaultCountry = {};
 
+        this.dialCodeVisibility = {};
+
+        this.strictMode = {};
+
+
         this.commonCountries = {}; // NEW: Object to store flag if common-countries === 'same'
 
         this.iti = {}; // Object to store international telephone input instances
@@ -110,7 +115,7 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
                     previousCountryData = currentCountryData;
                 }
 
-                this.updateCountryCodeHandler(e.currentTarget, currentCode, previousCode);
+                this.updateCountryCodeHandler(e.currentTarget, currentCode, previousCode, this.dialCodeVisibility[key]);
                 previousCode = currentCode;
             };
 
@@ -136,7 +141,6 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
             let defaultCountry = 'in';
             const defaultCoutiresArr = ['in','us','gb','ru','fr','de','br','cn','jp','it'];
             const uniqueId = `${formId}${widgetId}`;
-    
             if (this.includeCountries.hasOwnProperty(uniqueId) && this.includeCountries[uniqueId].length > 0) {
                 defaultCountry = this.includeCountries[uniqueId][0];
                 includeCountries = [...this.includeCountries[uniqueId]];
@@ -156,6 +160,9 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
             const iti = window.intlTelInput(telFIeld, {
                 initialCountry: defaultCountry,
                 utilsScript: utilsPath,
+                dialCodeVisibility: this.dialCodeVisibility[uniqueId],
+                strictMode: this.strictMode[uniqueId] === 'yes' ? true : false,
+                separateDialCode: this.dialCodeVisibility[uniqueId] === 'separate' ? true : false,
                 formatOnDisplay: false,
                 formatAsYouType: true,
                 autoFormat: false,
@@ -164,7 +171,6 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
                 onlyCountries: includeCountries,
                 excludeCountries: excludeCountries,
                 customPlaceholder: (selectedCountryPlaceholder, selectedCountryData) => {
-                    
                     // If the commonAttr flag is 'same', return a simple placeholder.
                     if (this.commonCountries[uniqueId]) {
                         return "No country found";
@@ -178,11 +184,28 @@ class CCFEF extends elementorModules.frontend.handlers.Base {
                     if ('in' === selectedCountryData.iso2) {
                         placeHolder = selectedCountryPlaceholder.replace(/^0+/, '');
                     }
-                    
-                    const placeholderText = `+${selectedCountryData.dialCode} ${placeHolder}`;
+                
+                    const placeholderText = this.dialCodeVisibility[uniqueId] === 'separate' || this.dialCodeVisibility[uniqueId] === 'hide' ? `${placeHolder}` : `+${selectedCountryData.dialCode} ${placeHolder}`;
                     return placeholderText;
                 },            
             });
+            
+            // Add styling for separate dial code
+            if (this.dialCodeVisibility[uniqueId] === 'separate') {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .cfefp-intl-container .iti__selected-dial-code,
+                    .cfefp-intl-container .iti__selected-flag {
+                        color: var(--e-form-field-text-color, #7a7a7a) !important;
+                    }
+                    .cfefp-intl-container .iti__selected-dial-code {
+                        font-size: inherit !important;
+                        font-family: inherit !important;
+                        line-height: inherit !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
             
             // Retrieve commonAttr from the hidden span to decide whether to hide the country list.
             const intlSpan = document.querySelector(`.elementor-widget.elementor-widget-form[data-id="${formId}"] .ccfef-editor-intl-input[data-field-id="${widgetId}"]`);
@@ -244,7 +267,8 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
      * @param {string} countryCode - The country code.
      * @param {string} previousCode - The previous country code.
      */
-    updateCountryCodeHandler(element, currentCode, previousCode) {
+    updateCountryCodeHandler(element, currentCode, previousCode, dialCodeVisibility) {
+        
         let value = element.value;
         
         if(currentCode && '+undefined' === currentCode || ['','+'].includes(value)){
@@ -257,7 +281,7 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
         
         if (!value.startsWith(currentCode)) {
             value = value.replace(/\+/g, '');
-            element.value = currentCode + value;
+            element.value = dialCodeVisibility === 'separate' || dialCodeVisibility === 'hide' ? value : currentCode + value;
         }
     }
 
@@ -298,6 +322,8 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
             const excludeCountries=element.data('exclude-countries');
             const defaultCountry=element.data('defaultCountry');
             const commonAttr=element.data('common-countries');
+            const dialCodeVisibility=element.data('dial-code-visibility');
+            const strictMode=element.data('strict-mode');
             const inputId = element.data('id');
             const fieldId = element.data('field-id');
             const formId = element.closest('.elementor-element.elementor-widget-form').data('id');
@@ -335,7 +361,19 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
                     }
                 }
                 }
-                
+
+
+                if('' !== strictMode){
+                    this.strictMode[currentId] = strictMode;
+                }
+
+                if('' !== dialCodeVisibility){
+                    this.dialCodeVisibility[currentId] = dialCodeVisibility;
+                }
+
+               
+
+
                 if ('' !== defaultCountry) {
                      this.defaultCountry[currentId] = defaultCountry;
                 }
@@ -366,11 +404,22 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
                     const inputTelElement = iti.telInput;
 
                     if('' !== inputTelElement.value){
-                        inputTelElement.value=inputTelElement.value.replace(/[^0-9+]/g, '');
+                        inputTelElement.value = inputTelElement.value.replace(/[^0-9+]/g, '');
+                        
+                        // Always ensure dial code is present in the value before validation
+                        const currentCountryData = iti.getSelectedCountryData();
+                        const dialCode = `+${currentCountryData.dialCode}`;
+                        
+                        // If using separate or hide mode, ensure dial code is in the value
+                        if (this.dialCodeVisibility[data] === 'separate' || this.dialCodeVisibility[data] === 'hide') {
+                            if (!inputTelElement.value.startsWith('+')) {
+                                inputTelElement.value = dialCode + inputTelElement.value;
+                            }
+                        }
                     }
 
                     const parentWrp = inputTelElement.closest('.elementor-field-group');
-                    const telContainer=parentWrp.querySelector('.cfefp-intl-container');
+                    const telContainer = parentWrp.querySelector('.cfefp-intl-container');
 
                     if (telContainer && inputTelElement.offsetHeight) {
                         telContainer.style.setProperty('--cfefp-intl-tel-button-height', `${inputTelElement.offsetHeight}px`);
@@ -389,6 +438,14 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
                     } else {
                         const errorType = iti.getValidationError();
                         if (errorType !== undefined && errorMap[errorType]) {
+                            // Remove dial code from input field if validation fails
+                            if (this.dialCodeVisibility[data] === 'separate' || this.dialCodeVisibility[data] === 'hide') {
+                                const currentCountryData = iti.getSelectedCountryData();
+                                const dialCode = `+${currentCountryData.dialCode}`;
+                                if (inputTelElement.value.startsWith(dialCode)) {
+                                    inputTelElement.value = inputTelElement.value.substring(dialCode.length);
+                                }
+                            }
                             errorMsgHtml += errorMap[errorType] + '</span>';
                             jQuery(inputTelElement).closest('.cfefp-intl-container').addClass('elementor-error');
                             jQuery(inputTelElement).after(errorMsgHtml);
