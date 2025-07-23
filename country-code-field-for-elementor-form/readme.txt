@@ -2,9 +2,9 @@
 Contributors: narinder-singh,satindersingh,coolplugins
 Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 1.3.12
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,10 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 
 **[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=events-widgets)**
 *This provides **The Events Calendar** plugin widgets for Elementor, allowing you to easily display events in a grid, list, or carousel format on Elementor pages.*
+
+**[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**
+
+Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields inside loop templates.
 
 
 <h3>Third Party library & License Information</h3>  
@@ -114,6 +118,13 @@ Add advanced fields and features to Elementor form widget, like **conditional fi
 == Upgrade Notice ==
 
 == Changelog ==
+
+= Version 1.4.1 | July 23, 2025 =
+Minor:- Textual Changes.
+
+= Version 1.4.0 | July 23, 2025 =
+Updated:- Admin Dashboard enhancements.
+Tested upto:- Elementor Version 3.30.3 and Elementor Pro Version 3.30.0
 
 = Version 1.3.12 | May 21, 2025 =
 Added:- Strict Mode.
