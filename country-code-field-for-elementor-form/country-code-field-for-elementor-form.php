@@ -3,7 +3,7 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/
  * License:GPL2
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.4.1' );
+	define( 'CCFEF_VERSION', '1.4.2' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -162,7 +162,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 
 
 		function ccfef_plugin_get_pro_link( $links ) {
-			$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
+			$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
 			array_unshift( $links, $get_pro_link );
 			return $links;
 		}
@@ -296,7 +296,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( CCFEF_PLUGIN_BASE === $plugin_file ) {
 				$row_meta = [
-					'docs' => '<a href="https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=cfef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard/" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
+					'docs' => '<a href="https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins-list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
 				];
 
 				$plugin_meta = array_merge( $plugin_meta, $row_meta );
