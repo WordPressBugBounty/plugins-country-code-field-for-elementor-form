@@ -3,13 +3,13 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/
  * License:GPL2
  * Text Domain:country-code-for-elementor-form-telephone-field
- * Elementor tested up to: 3.30.3
- * Elementor Pro tested up to: 3.30.0
+ * Elementor tested up to: 3.31.2
+ * Elementor Pro tested up to: 3.31.2
  *
  * @package ccfef
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.4.2' );
+	define( 'CCFEF_VERSION', '1.4.3' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -162,7 +162,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 
 
 		function ccfef_plugin_get_pro_link( $links ) {
-			$get_pro_link = '<a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list#pricing" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
+			$get_pro_link = '<a href="https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-list" style="font-weight: bold; color: green;" target="_blank">Get Pro</a>';
 			array_unshift( $links, $get_pro_link );
 			return $links;
 		}

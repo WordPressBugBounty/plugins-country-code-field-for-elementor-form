@@ -160,7 +160,7 @@ class CFEF_Admin {
         }
 
 
-        $tab = isset($_GET['tab']) ? $_GET['tab'] : 'form-elements';
+        $tab = isset($_GET['tab']) ? esc_attr($_GET['tab']) : 'form-elements';
         ?>
         <div class="cfkef-wrapper">
             <div class="cfk-header">
@@ -170,20 +170,20 @@ class CFEF_Admin {
                     </a>
 
                     <span>Lite</span>
-                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin;?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard#pricing">
+                    <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolformkit.com/?utm_source=<?php echo esc_attr($first_plugin);?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard">
                         <img class="crown-diamond-pro" src="<?php echo esc_url(CCFEF_PLUGIN_URL . 'assets/images/crown-diamond-pro.png'); ?>" alt="Cool FormKit Logo">
                         <?php esc_html_e('Upgrade To Pro', 'cool-formkit'); ?>
                     </a>
                 </div>
                 <div class="cfk-buttons">
                     <p>Advanced Elementor Form Builder.</p>
-                    <a href="https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=<?php echo $first_plugin; ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard#pricing" class="button" target="_blank">Get Cool FormKit</a>
+                    <a href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get-pro&utm_content=plugins-dashboard" class="button" target="_blank">Get Cool FormKit</a>
                 </div>
             </div>
             <h2 class="nav-tab-wrapper">
-                <a href="?page=cool-formkit&tab=form-elements" class="nav-tab <?php echo $tab == 'form-elements' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Form Elements', 'cool-formkit'); ?></a>
-                <a href="?page=cool-formkit&tab=settings" class="nav-tab <?php echo $tab == 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Settings', 'cool-formkit'); ?></a>
-                <a href="?page=cool-formkit&tab=license" class="nav-tab <?php echo $tab == 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('License', 'cool-formkit'); ?></a>
+                <a href="?page=cool-formkit&tab=form-elements" class="nav-tab <?php echo esc_attr($tab) == 'form-elements' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Form Elements', 'cool-formkit'); ?></a>
+                <a href="?page=cool-formkit&tab=settings" class="nav-tab <?php echo esc_attr($tab) == 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Settings', 'cool-formkit'); ?></a>
+                <a href="?page=cool-formkit&tab=license" class="nav-tab <?php echo esc_attr($tab) == 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('License', 'cool-formkit'); ?></a>
             </h2>
             <div class="tab-content">
                 <?php

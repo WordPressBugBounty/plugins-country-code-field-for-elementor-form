@@ -129,12 +129,12 @@ if (!class_exists('ccfef_cronjob')) {
                       'plugin_name'       => "Country Code For Elementor Form Telephone Field",
                       'plugin_initial'    => $initial_version,
                       'email'             => $admin_email,
-                      'site_url'          => esc_url_raw($site_url),
+                      'site_url'          => esc_url($site_url),
                       'server_info'       => $server_info,
                       'extra_details'     => $extra_details,
                   );
               
-                  $response = wp_remote_post($feedback_url, array(
+                  $response = wp_remote_post(esc_url($feedback_url), array(
                       'method'    => 'POST',
                       'timeout'   => 50,
                       'headers'   => array(
@@ -143,8 +143,12 @@ if (!class_exists('ccfef_cronjob')) {
                       'body'      => wp_json_encode($post_data),
                   ));
               
-                  if (is_wp_error($response)) {
-                      error_log('ccfef Feedback Send Failed: ' . $response->get_error_message());
+                  if
+                   (is_wp_error($response)) {
+
+                        if (defined('WP_DEBUG') && WP_DEBUG) {
+                            error_log('ccfef Feedback Send Failed: ' . $response->get_error_message());
+                        }
                       return;
                   }
               
