@@ -4,7 +4,7 @@ Tags: elementor, form, elementor-form, country code
 Requires at least: 5.0
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Improve your Elementor forms with the **Country Code for Elementor Form Telephon
 Guide your visitors to select their country code while entering their mobile number, ensuring correctly formatted data submissions every time.
 Now, users can easily pick their country code, ensuring their phone numbers are entered correctly.
 
-<a href="https://coolplugins.net/product/country-code-for-elementor-form-telephone-field/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=demo&utm_content=view-demos">Check Free Demo</a>
+<a href="https://coolplugins.net/product/country-code-for-elementor-form-telephone-field/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=demo&utm_content=view_demos">Check Free Demo</a>
 
 ### Key Features:
 - **Seamless Integration**: Add country code selection directly into Elementor forms.
@@ -33,17 +33,17 @@ Upgrade your Elementor forms today and optimize user submissions with the **Coun
 
 ### A PLUGIN BY COOL PLUGINS
 
-**[Cool FormKit For Elementor Forms](https://coolplugins.net/cool-formkit-for-elementor-forms/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get-pro&utm_content=buy-coolformkit)**
+**[Cool FormKit For Elementor Forms](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_more_plugins)**
 Add advanced fields and features to Elementor form widget, like **conditional fields**, **range sliders** and **country code**. Upgrade your form building experience with **Cool FormKit**.
 
 
-**[Conditional Fields for Elementor Form – Display Conditions](https://wordpress.org/plugins/conditional-fields-for-elementor-form/#description)**
+**[Conditional Fields for Elementor Form – Display Conditions](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfef_more_plugins)**
 *This is an addon for Elementor that helps you apply conditional logic to Elementor form fields. You can hide or show fields based on the input values from other form fields.*
 
-**[Timeline Widget for Elementor](https://cooltimeline.com/plugin/timeline-widget-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=timeline-widget)**
+**[Timeline Widget for Elementor](https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=twae_more_plugins)**
 *Use this plugin to showcase your history in a stylish vertical or horizontal timeline layout on Elementor pages.*
 
-**[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=events-widgets)**
+**[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=ectbe_more_plugins)**
 *This provides **The Events Calendar** plugin widgets for Elementor, allowing you to easily display events in a grid, list, or carousel format on Elementor pages.*
 
 **[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**
@@ -118,6 +118,10 @@ Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields insid
 == Upgrade Notice ==
 
 == Changelog ==
+
+= Version 1.4.4 | Aug 22, 2025 =
+Fixed: Security issues.
+Updated:- UTM links.
 
 = Version 1.4.3 | Aug 13, 2025 =
 Fixed: Security issues.

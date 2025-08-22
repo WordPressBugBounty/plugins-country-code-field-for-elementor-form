@@ -177,7 +177,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 		);
 
 		$ccfef_auto_detect_desc = sprintf(
-			'%s <br> To use - <a target="__blank" href="https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=editor-panel">(UPGRADE TO PRO)</a>',
+			'%s <br> To use - <a target="__blank" href="https://coolformkit.com/pricing/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=editor_panel">(UPGRADE TO PRO)</a>',
 			esc_html__( 'Auto select user country using ipapi.co', 'country-code-for-elementor-form-telephone-field' )			
 		);
 
@@ -192,7 +192,7 @@ class CFEFP_COUNTRY_CODE_FIELD {
 		);
 
 		$ccfef_prefer_desc = sprintf(
-			'%s To use - <a target="__blank" href="https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get-pro&utm_content=editor-panel">(UPGRADE TO PRO)</a>',
+			'%s To use - <a target="__blank" href="https://coolformkit.com/pricing/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=editor_panel">(UPGRADE TO PRO)</a>',
 			esc_html__( 'The Specified countries will appear at the top of the list.', 'country-code-for-elementor-form-telephone-field' ),			
 		);
 
