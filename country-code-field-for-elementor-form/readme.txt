@@ -1,206 +1,291 @@
 === Country Code For Elementor Form Telephone Field ===
-Contributors: narinder-singh,satindersingh,coolplugins
-Tags: elementor, form, elementor-form, country code
+Contributors: narinder-singh, satindersingh, coolplugins
+Donate link: https://donate.stripe.com/5kQdR92iBevO75WbPm6c00i
+Tags: country code, phone field, elementor form, elementor, elementor form builder
 Requires at least: 5.0
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Elementor tested up to: 3.31.2
+Elementor Pro tested up to: 3.31.2
 
-Guide your visitors to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
+Add a country code dropdown with flags to Elementor form phone field for valid international numbers. Also works with Hello Plus form widget.
 
 == Description ==
 
-https://www.youtube.com/watch?v=blGGyAti_AI&feature=youtu.be
+Use **[Country Code for Elementor Form Telephone Field](https://coolplugins.net/product/country-code-for-elementor-form-telephone-field/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=top_name)** plugin to easily add an international **country code** dropdown with flags inside the phone field of your **Elementor form**.
 
-Improve your Elementor forms with the **Country Code for Elementor Form Telephone Field** plugin! This essential addon makes mobile number entry easy and accurate. 
-Guide your visitors to select their country code while entering their mobile number, ensuring correctly formatted data submissions every time.
-Now, users can easily pick their country code, ensuring their phone numbers are entered correctly.
+---
 
-<a href="https://coolplugins.net/product/country-code-for-elementor-form-telephone-field/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=demo&utm_content=view_demos">Check Free Demo</a>
+👉 **[VIEW FREE DEMO - COUNTRY CODE FOR ELEMENTOR FORM](https://coolformkit.com/features/country-code-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=view_demo#demo-form)**  
 
-### Key Features:
-- **Seamless Integration**: Add country code selection directly into Elementor forms.
-- **User-Friendly**: Simplify phone number input with guided country code selection.
-- **Customizable**: Display only specific countries in the country code dropdown.
-- **Selective Exclusion**: Remove specific countries from the country code dropdown.
-- **Enhanced Usability**: Improve form usability and data accuracy with precise formatting.
-- **Default Setting**: Set a default country code for convenience.
-- **Compatibility with Hello Plus**: Country Code For Elementor Form Telephone Field is now fully compatible with Hello Plus, making it easy to add a country code dropdown to telephone fields in Hello Plus forms built inside Elementor.
+https://youtu.be/blGGyAti_AI 
 
-Upgrade your Elementor forms today and optimize user submissions with the **Country Code for Elementor Form Telephone Field** plugin!
-
-### A PLUGIN BY COOL PLUGINS
-
-**[Cool FormKit For Elementor Forms](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfkef_more_plugins)**
-Add advanced fields and features to Elementor form widget, like **conditional fields**, **range sliders** and **country code**. Upgrade your form building experience with **Cool FormKit**.
+Upgrade to **[Cool FormKit](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=below_video)** to unlock more advanced features for Elementor forms - including [range slider](https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=below_video), [signature field](https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=below_video), [conditional logic](https://coolformkit.com/features/conditional-logic-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=below_video), [calculator](https://coolformkit.com/features/calculator-for-elementor/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=below_video) & more. Start building smarter forms with coolformkit today!
 
 
-**[Conditional Fields for Elementor Form – Display Conditions](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=cfef_more_plugins)**
-*This is an addon for Elementor that helps you apply conditional logic to Elementor form fields. You can hide or show fields based on the input values from other form fields.*
+---
 
-**[Timeline Widget for Elementor](https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=twae_more_plugins)**
-*Use this plugin to showcase your history in a stylish vertical or horizontal timeline layout on Elementor pages.*
+### Free Plugin Features:
 
-**[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=ectbe_more_plugins)**
-*This provides **The Events Calendar** plugin widgets for Elementor, allowing you to easily display events in a grid, list, or carousel format on Elementor pages.*
+* **Seamless Integration with Elementor Forms**: This ultimate Elementor addon helps users enter valid mobile numbers by selecting the correct country dial code before typing their phone number. It ensures properly formatted data, improves form validation, and reduces errors in contact forms, booking forms, registration forms, and more. 
 
-**[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**
+* **Show Only Selected Countries**: Limit the dropdown to display only specific countries. For example, if you only want to show Canada, India, United States, and United Kingdom, simply enter their **[alpha-2 codes](https://www.iban.com/country-codes)** in the Tel field settings like: `ca,in,us,gb`.  
 
-Enhance Elementor Pro's Loop Grid widget by displaying ACF Repeater Fields inside loop templates.
+* **Exclude Specific Countries**: Show all countries but hide a few by entering their alpha-2 codes (e.g., `af,pk` removes Afghanistan and Pakistan).
 
+* **Set a Default Country**: Preselect a default country code when the form loads.
 
-<h3>Third Party library & License Information</h3>  
-* **intl-tel-input:-**
- [https://intl-tel-input.com/) 
-* **International Telephone Input Github:-** [https://github.com/jackocnr/intl-tel-input](International Telephone Input Github)    
+* **Control Dial Code Visibility**: Show or hide the dial code while users type their phone number.
 
- == Screenshots == 
- 1. Country Code For Elementor Form Telephone Field Previews.
- 1. Country Code For Elementor Form Telephone Field Settings configuration.
+* **Strict Mode Validation**: Enable strict mode to block invalid numbers or extra digits based on the selected country.
 
+* **Compatibility with Hello Plus**: This addon also works with the Hello Plus form lite widget. If you are creating forms using Elementor Free with Hello Plus, you can still add an international dial code dropdown to the phone field using this ultimate addon.
 
+---
 
-== Frequently Asked Questions ==
+### Upgrade for More Features
 
-** What does the Country Code for Elementor Form Telephone Field plugin do?**
- This plugin allows users to select their country code when entering their mobile number in Elementor forms, ensuring accurate and properly formatted phone number submissions.
+* **Auto Detect Country Code by User IP**  
+   Automatically select the user’s country code in the phone field based on their IP address. You can enable this feature inside your Elementor form by using CoolFormKit pro version.
 
-** How do I integrate the country code selection into my Elementor forms?**
- The plugin seamlessly integrates into your Elementor forms, adding a dropdown menu for country code selection next to the telephone field.
+* **Show Preferred Countries at Top**  
+   By default, the dropdown lists countries alphabetically (A–Z). With this feature, you can pin specific countries (like India, US, UK) at the top for faster user selection.
 
-** Can I customize which countries appear in the country code dropdown?**
- Yes, you can choose to display only specific countries or exclude certain countries from the dropdown menu.
+* **Show or Hide Country Flags**  
+   Choose whether to display country flags alongside dial codes. For faster form loading, you can disable flags and only show the country dial codes.
 
-** Is it possible to set a default country code for the telephone field?**
- Yes, you can set a default country code to be pre-selected for users, making the form-filling process quicker.
+* **[Country & State Field for Elementor Form](https://coolformkit.com/features/country-and-state-field-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=pro_features)**  
+   Go beyond phone fields! With Cool FormKit Pro, you can add a Country + State dropdown field. Users first select a country, and then the state field updates dynamically with available states.
 
-** How does this plugin enhance form usability and data accuracy?**
- By guiding users to select their country code, the plugin ensures phone numbers are entered in the correct format, reducing errors and improving data accuracy.
+👉 **[GET COOL FORMKIT PRO](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=pro_features)** 
 
-** Will this plugin slow down my Elementor forms?**
- No, the plugin is designed to integrate smoothly without affecting the performance or speed of your Elementor forms.
+---
 
-** Is technical support available for this plugin?**
- Yes, technical support is available to help with any issues or questions you may have regarding the plugin.
+### More Essential Addons for Elementor Form
 
-** Can this plugin be used on multiple Elementor forms on my website?**
- Yes, you can use the Country Code for Elementor Form Telephone Field plugin on multiple forms across your website.
+* **[Conditional Fields for Elementor Form](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=elementor_form_addons)**  
+ Add **conditional logic** to Elementor form fields to show or hide inputs dynamically based on user choices. Make your forms smarter, cleaner, and easier to use.  
 
-** Is the plugin compatible with other Elementor addons?**
- Yes, the plugin is designed to work seamlessly with other Elementor addons, ensuring compatibility and smooth integration.
+* **[Form Input Masks for Elementor Forms](https://wordpress.org/plugins/form-masks-for-elementor/)**  
+ Apply **input masks** so users enter properly formatted data like phone numbers, dates, credit cards, and more. Improves accuracy and reduces validation errors.  
 
-** How do I update the plugin to the latest version?**
- You can update the plugin through your WordPress dashboard, where you'll be notified when a new version is available. Simply follow the update prompts to install the latest version.
+* **[Cool FormKit](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=elementor_form_addons)**  
+ A complete **form builder** addon for Elementor Free & Pro. It extends Elementor Pro forms with advanced fields or provides a dedicated form builder widget if you’re on Elementor Free. Popular features include:  
+   * [Conditional Logic for Elementor Form Fields](https://coolformkit.com/features/conditional-logic-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Range Slider for Elementor Form](https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Signature Field for Elementor Form](https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Select2 Field](https://coolformkit.com/features/select2-field-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Image Radio & Checkbox Fields](https://coolformkit.com/features/image-radio-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Rating Field for Elementor Form](https://coolformkit.com/features/rating-field-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Calculator for Elementor](https://coolformkit.com/features/calculator-for-elementor/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [Cloudflare Turnstile for Elementor Form](https://coolformkit.com/features/cloudflare-turnstile-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+   * [hCAPTCHA for Elementor Form](https://coolformkit.com/features/hcaptcha-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
 
-** How can I add a country code to the phone field in Elementor Free? **
- Use the Country Code For Elementor Form Telephone Field plugin to add a country code dropdown to tel fields in Elementor Free forms. This helps users enter their numbers correctly, without the need for Elementor Pro.
+👉 [VIEW ALL FEATURES](https://coolformkit.com/features/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=features&utm_content=elementor_form_addons)  
+
+---
+
+### Other Popular Addons for Elementor
+
+Enhance your website-building workflow with these other ultimate Elementor addons by Cool Plugins:  
+
+* **[Loop Grid Extender for Elementor Pro](https://wordpress.org/plugins/loop-grid-extender-for-elementor-pro/)**  
+ Add ACF Repeater fields & advanced taxonomy filters inside Elementor Pro loop grids.
+
+* **[AutoPoly – AI Translation for Polylang](https://coolplugins.net/product/autopoly-ai-translation-for-polylang/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=other_addons)**  
+ Instantly auto-translate Elementor pages using AI. Build multilingual websites faster with Polylang + AutoPoly.  
+
+* **[Timeline Widget for Elementor](https://cooltimeline.com/plugin/timeline-widget-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=other_addons)**  
+ Display history, events, or milestones in beautiful vertical or horizontal timelines inside Elementor pages.  
+
+* **[Events Widgets for Elementor](https://eventscalendaraddons.com/plugin/events-widgets-pro/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=other_addons)**  
+ Add The Events Calendar widgets to Elementor — show events in grid, list, or carousel layouts with ease.
+
+* **[LocoAI – Auto Translate for Loco Translate](https://locoaddon.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=other_addons)**  
+ Translate WordPress plugins & themes automatically with AI. One-click string translation inside Loco Translate.  
+
+---
+
+#### Third-Party Libraries & License Information  
+
+This plugin makes use of the following third-party library:  
+
+* **intl-tel-input**  
+  - Website: [https://intl-tel-input.com](https://intl-tel-input.com)  
+  - GitHub: [https://github.com/jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)  
+  - License: [MIT License](https://github.com/jackocnr/intl-tel-input/blob/master/LICENSE)   
+
+== Screenshots ==  
+
+1. Country Code for Elementor Form Telephone Field Preview 
+2. Country Code for Elementor Form Settings Configuration
+
+== Frequently Asked Questions ==  
+
+= What does the Country Code for Elementor Form Telephone Field plugin do? =  
+This plugin allows users to select their **country code** when entering their mobile number in Elementor forms. It ensures accurate and properly formatted phone number submissions, reducing errors.  
+
+= Can I set a default country code in the dropdown? =  
+Yes, you can set any country as the default selected country code inside the plugin settings by entering that country’s alpha-2 code (e.g., `in` for India, `ca` for Canada).  
+Find the full list of alpha-2 codes here: [https://www.iban.com/country-codes](https://www.iban.com/country-codes)  
+
+= Does this plugin work with Elementor Free or Elementor Pro? =  
+Yes, it works with both Elementor Free and Elementor Pro. For Elementor Pro users, the country code dropdown integrates directly into the Pro form widget. Free version users can use it with Hello Plus form lite widget. 
+
+= Does it automatically detect the user’s country code? =  
+Auto-detection of the user’s country code based on IP address is available in the **[Cool FormKit](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=faqs)** pro version. The free version does not include this feature.  
+
+= Can I hide the country flags and only show dial codes? =  
+Yes, you can choose to hide country flags and display only the dial codes for minimal design or faster loading. *(This feature is available in the Pro version via Cool FormKit.)*  
+
+= Will it slow down my Elementor form or website? =  
+No, the plugin is lightweight and optimized for performance. It only loads necessary CSS and JavaScript files on pages where the Elementor form is present.  
+
+= Can I show specific countries at the top of the dropdown? =  
+Yes, you can set preferred countries in the settings so they always appear at the top of the dropdown for quick selection.  
+
+= Is this plugin GDPR-compliant? =  
+Yes, the plugin is fully GDPR-friendly. It does not store, track, or share any user data.  
+
+= Do you offer more advanced features for Elementor form? =  
+Yes! Upgrade to **[Cool FormKit](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=faqs)** to unlock advanced options like:  
+* Auto-detect country code  
+* Conditional form logic  
+* Calculator fields  
+* Rating fields  
+* Signature fields, and more.  
+
+= Where can I get support if I face an issue? =  
+You can open a support ticket on the [WordPress.org support forum](https://wordpress.org/support/plugin/country-code-for-elementor-form-telephone-field/) or visit our [official support page](https://coolplugins.net/support/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=support&utm_content=faqs).  
+
+= Where do I report security bugs found in this plugin? =
+Please report security bugs found in the source code of the Country Code For Elementor Form Telephone Field plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/8fb7494e-36f6-4252-b98c-26e724a04496). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Installation ==
 
 1. **Install the Plugin:**
-   - In your WordPress admin dashboard, go to **Plugins >> Add New**.
-   - Search for "Country Code For Elementor Form Telephone Field" and install the plugin by Cool Plugins.
-   - Alternatively, you can install the plugin manually by uploading the unzipped plugin folder to the **/wp-content/plugins** directory.
-   - **Note:** Ensure you have the **Elementor PRO** plugin installed to use this plugin's features.
+   - In your WordPress admin dashboard, go to **Plugins → Add New**.
+   - Search for **"Country Code For Elementor Form Telephone Field"** and install the plugin developed by *Cool Plugins*.
+   - Alternatively, you can manually upload the plugin:
+     - Download and unzip the plugin.
+     - Upload the folder to **/wp-content/plugins/** directory using FTP or File Manager.
+   - **Note:** This plugin extends the form widget provided by **Elementor Pro** or **Hello Plus**. Please ensure you have one of these installed and activated.
 
 2. **Activate the Plugin:**
-   - In your WordPress admin dashboard, go to **Plugins >> Installed Plugins**.
+   - In your WordPress admin dashboard, go to **Plugins → Installed Plugins**.
    - Find **Country Code For Elementor Form Telephone Field** and click **Activate**.
 
 3. **Configure the Plugin:**
-   - Edit a page with Elementor.
-   - Add a form and include a Tel Field.
-   - Enable the Country Code field within the Tel Field settings.
-   - Configure it to guide users in selecting their country code effortlessly.
+   - Edit any page with **Elementor**.
+   - Add a **Form widget** and include a **Tel (Phone) Field**.
+   - Enable the **Country Code dropdown** inside the Tel Field settings.
+   - Configure options so users can easily select their country code before entering their phone number.
 
-== Upgrade Notice ==
+---
+
+### More Docs & Guides
+
+- [Country Code with Advanced Pro Settings](https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=docs&utm_content=installation)  
+- [Cool FormKit Documentation](https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=docs&utm_content=installation)
 
 == Changelog ==
 
-= Version 1.4.4 | Aug 22, 2025 =
-Fixed: Security issues.
-Updated:- UTM links.
+= 1.4.5 | Sep 9, 2025 =
+* Added: Added other plugin recommendations for Elementor users.
 
-= Version 1.4.3 | Aug 13, 2025 =
-Fixed: Security issues.
-Updated:- Dashboard links.
+= 1.4.4 | Aug 22, 2025 =
+* Fixed: Security issues.
+* Updated:- Internal links.
 
-= Version 1.4.2 | July 30, 2025 =
-Improved:- Dashboard links.
+= 1.4.3 | Aug 13, 2025 =
+* Fixed: Security issues.  
+* Updated: Dashboard links.  
 
-= Version 1.4.1 | July 23, 2025 =
-Minor:- Textual Changes.
+= 1.4.2 | July 30, 2025 =
+* Improved: Dashboard links.  
 
-= Version 1.4.0 | July 23, 2025 =
-Updated:- Admin Dashboard enhancements.
-Tested upto:- Elementor Version 3.30.3 and Elementor Pro Version 3.30.0
+= 1.4.1 | July 23, 2025 =
+* Minor: Textual changes.  
 
-= Version 1.3.12 | May 21, 2025 =
-Added:- Strict Mode.
-Added:- Added display options for the country field dial code — users can now choose to hide it, show it inline, or display it separately.
-Tested upto:- Elementor Version 3.29.0.
-Tested upto:- Elementor Pro Version 3.29.0.
+= 1.4.0 | July 23, 2025 =
+* Updated: Admin Dashboard enhancements.  
+* Tested up to: Elementor 3.30.3 and Elementor Pro 3.30.0.  
 
-= Version 1.3.11 | Apr 24, 2025 =
-Minor:- Textual Changes.
-Fixed:- Placeholder format issue.
+= 1.3.12 | May 21, 2025 =
+* Added: Strict Mode.  
+* Added: Display options for the country field dial code — hide, show inline, or display separately.  
+* Tested up to: Elementor 3.29.0 and Elementor Pro 3.29.0.  
 
-= Version 1.3.10 | Apr 1, 2025 =
-Added:- Compatibilty with Hello Plus Form
-Tested upto:- Elementor Version 3.28.2
-Improved:- Exclude Country Settings.
+= 1.3.11 | Apr 24, 2025 =
+* Minor: Textual changes.  
+* Fixed: Placeholder format issue.  
 
-= Version 1.3.9 | Mar 21, 2025 =
-Improved:- Exclude Country Settings.
-Tested upto:- Elementor Version 3.28.0.
-Tested upto:- Elementor Pro Version 3.28.0.
+= 1.3.10 | Apr 1, 2025 =
+* Added: Compatibility with Hello Plus Form.  
+* Improved: Exclude Country settings.  
+* Tested up to: Elementor 3.28.2.  
 
-= Version 1.3.8 | Feb 11, 2025 =
-Minor:- Textual Changes.
+= 1.3.9 | Mar 21, 2025 =
+* Improved: Exclude Country settings.  
+* Tested up to: Elementor 3.28.0 and Elementor Pro 3.28.0.  
 
-= Version 1.3.7 | Feb 06, 2025 =
-Minor:- Textual Changes.
+= 1.3.8 | Feb 11, 2025 =
+* Minor: Textual changes.  
 
-= Version 1.3.6 | Feb 06, 2025 =
-Minor:- Textual Changes.
+= 1.3.7 | Feb 06, 2025 =
+* Minor: Textual changes.  
 
-= Version 1.3.5 | Dec 21th, 2024 =
-Improved:- Country flags are now loaded via SVG for better performance and customization.
+= 1.3.6 | Feb 06, 2025 =
+* Minor: Textual changes.  
 
-= Version 1.3.4 | Dec 18th, 2024 =
-Tested upto:** Elementor Version 3.26.0
+= 1.3.5 | Dec 21, 2024 =
+* Improved: Country flags now load via **SVG** for better performance and customization.  
 
-= Version 1.3.3 | Dec 12th, 2024 =
-Fixed: Load text domain issue fixed.
-Improved:- Compatible with pro elements.
+= 1.3.4 | Dec 18, 2024 =
+* Tested up to: Elementor 3.26.0.  
 
-= Version 1.3.2 | Nov 19th, 2024 =
-Tested upto:** WordPress 6.7 and Elementor Version 3.25.7.
+= 1.3.3 | Dec 12, 2024 =
+* Fixed: Load text domain issue.  
+* Improved: Compatibility with Pro elements.  
 
-= Version 1.3.1 | Sep 4th, 2024 =
-Improved:- Phone number country-wise formatting.
-Minor:- Error messages are localized for translation.
+= 1.3.2 | Nov 19, 2024 =
+* Tested up to: WordPress 6.7 and Elementor 3.25.7.  
 
-= Version 1.3 | June 17th, 2024 =
-Added:- Integrated new dashboard.
-Minor:- code improvements and textual changes
+= 1.3.1 | Sep 4, 2024 =
+* Improved: Phone number country-wise formatting.  
+* Minor: Localized error messages for translation.  
 
-= Version 1.2.0 | May 28th, 2024 =
-Added:- Default country code feature.
-Improved: Minor code improvements and textual changes
+= 1.3.0 | Jun 17, 2024 =
+* Added: Integrated new dashboard.  
+* Minor: Code improvements and textual changes.  
 
-= Version 1.1.0 | May 24th, 2024 =
-Added:- Integrated include/exclude country code feature.
-Added:- Review notice and admin notice for the plugin.
-Improved:- Improved Overall plugin code.
+= 1.2.0 | May 28, 2024 =
+* Added: Default country code feature.  
+* Improved: Minor code improvements and textual changes.  
 
-= Version 1.0.1 | May 20th, 2024 =
-Added:- intl-tel-input library source code files
+= 1.1.0 | May 24, 2024 =
+* Added: Include/Exclude country code feature.  
+* Added: Review notice and admin notice for the plugin.  
+* Improved: Overall plugin code.  
 
-= Version 1.0.1 | May 20th, 2024 =
-Added:- intl-tel-input library source code files
+= 1.0.1 | May 20, 2024 =
+* Added: intl-tel-input library source code files.  
 
-= Version 1.0.0 | May 1st, 2024 =
-- Initial Release-
+= 1.0.0 | May 1, 2024 =
+* Initial Release.  
+
+### Related Plugins & More
+
+* **[Cool FormKit](https://coolformkit.com/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=changelog)**
+   Build advanced forms in Elementor with Cool FormKit. Works with Elementor Free, Pro, and Hello Plus. Extend Elementor Pro Form widget or create full forms with Elementor Free.
+
+* **[Conditional Fields for Elementor Form](https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=changelog)**
+   Apply advanced conditional logic to Elementor forms. Show or hide fields dynamically based on user input for smarter forms.
+
+== Upgrade Notice ==
+
+= 1.3.0 =
+* Integrated new plugin dashboard.
