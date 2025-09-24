@@ -403,6 +403,13 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
               
                     const inputTelElement = iti.telInput;
 
+                    if(jQuery(inputTelElement).closest('.elementor-field-type-tel').hasClass('cfef-hidden')){
+
+                        inputTelElement.value = '+1234567890';
+
+                        return;
+                    }
+
                     if('' !== inputTelElement.value){
                         inputTelElement.value = inputTelElement.value.replace(/[^0-9+]/g, '');
                         

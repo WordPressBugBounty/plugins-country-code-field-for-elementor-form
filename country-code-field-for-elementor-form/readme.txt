@@ -5,7 +5,7 @@ Tags: country code, phone field, elementor form, elementor, elementor form build
 Requires at least: 5.0
 Tested up to: 6.8.2
 Requires PHP: 7.2
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 3.32.2
@@ -193,10 +193,14 @@ Please report security bugs found in the source code of the Country Code For Ele
 
 == Changelog ==
 
+= 1.4.7 | Sep 24, 2025 =
+* Fixed: Country code validation issues.
+* Fixed: Conditional display issue when changing the selected country.
+
 = 1.4.6 | Sep 19, 2025 =
-- Added: - Added other plugin recommendations for Pro Elements users.
-- Fixed: - Conflicts with other plugins.
-- Tested up to: Elementor 3.32.2 and Elementor Pro 3.32.1.
+* Added: Added other plugin recommendations for Pro Elements users.
+* Fixed: Conflicts with other plugins.
+* Tested up to: Elementor 3.32.2 and Elementor Pro 3.32.1.
 
 = 1.4.5 | Sep 9, 2025 =
 * Added: Added other plugin recommendations for Elementor users.
