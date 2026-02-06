@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 // Ensure the file is being accessed through the WordPress admin area
 if (!defined('ABSPATH')) {
     die;
@@ -33,42 +34,42 @@ if (!empty($plugins_dates)) {
     <div class="wrapper-header">
         <div class="cfkef-save-all">
             <div class="cfkef-title-desc">
-                <h2><?php esc_html_e('License Key', 'cool-formkit'); ?></h2>
+                <h2><?php esc_html_e('License Key', 'country-code-field-for-elementor-form'); ?></h2>
             </div>
             <div class="cfkef-save-controls">
-                <span><?php esc_html_e('Free', 'cool-formkit'); ?></span>
+                <span><?php esc_html_e('Free', 'country-code-field-for-elementor-form'); ?></span>
                 <a class="button button-primary upgrade-pro-btn" target="_blank" href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=license_dashboard">
                     <img class="crown-diamond-pro" src="<?php echo esc_url(CCFEF_PLUGIN_URL . 'assets/images/crown-diamond-pro.png'); ?>" alt="Cool FormKit Logo">
-                    <?php esc_html_e('Upgrade To Pro', 'cool-formkit'); ?>
+                    <?php esc_html_e('Upgrade To Pro', 'country-code-field-for-elementor-form'); ?>
                 </a>
             </div>
         </div>
     </div>
     <div class="wrapper-body">
-        <p><?php esc_html_e('Your license key provides access to pro version updates and support.', 'cool-formkit'); ?></p>
-        <p><?php esc_html_e('You\'re using ', 'cool-formkit'); ?><strong><?php esc_html_e('free plugin ', 'cool-formkit'); ?></strong><?php esc_html_e('- no license needed. Enjoy! 😊', 'cool-formkit'); ?></p>
+        <p><?php esc_html_e('Your license key provides access to pro version updates and support.', 'country-code-field-for-elementor-form'); ?></p>
+        <p><?php esc_html_e('You\'re using ', 'country-code-field-for-elementor-form'); ?><strong><?php esc_html_e('free plugin ', 'country-code-field-for-elementor-form'); ?></strong><?php esc_html_e('- no license needed. Enjoy! 😊', 'country-code-field-for-elementor-form'); ?></p>
         <div class="cfkef-license-upgrade-box">
-            <p><?php esc_html_e('To unlock more features, consider ', 'cool-formkit'); ?><a href="https://coolformkit.com/pricing/?utm_source=<?php echo  esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=license_dashboard" target="_blank"><?php esc_html_e('upgrading to Pro', 'cool-formkit'); ?></a>.
+            <p><?php esc_html_e('To unlock more features, consider ', 'country-code-field-for-elementor-form'); ?><a href="https://coolformkit.com/pricing/?utm_source=<?php echo  esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=license_dashboard" target="_blank"><?php esc_html_e('upgrading to Pro', 'country-code-field-for-elementor-form'); ?></a>.
             </p>
-            <em><?php esc_html_e('As a valued user, you automatically receive an exclusive discount on the Annual License and an even greater discount on the POPULAR Lifetime License at checkout!', 'cool-formkit'); ?></em>
+            <em><?php esc_html_e('As a valued user, you automatically receive an exclusive discount on the Annual License and an even greater discount on the POPULAR Lifetime License at checkout!', 'country-code-field-for-elementor-form'); ?></em>
         </div>
 
 
         <div class="pro-plugin-buy cfkef-license-upgrade-box">
 
-            <p><?php esc_html_e('Have you purchased pro plugin?', 'cool-formkit'); ?></p>
+            <p><?php esc_html_e('Have you purchased pro plugin?', 'country-code-field-for-elementor-form'); ?></p>
 
 
 
             <div class="pro-plugin-buy-buttons-con">
 
                 <a class="button button-primary pro-bought-btn" target="_blank" href="https://my.coolplugins.net/account/downloads">
-                    <?php esc_html_e('Yes', 'cool-formkit'); ?>
+                    <?php esc_html_e('Yes', 'country-code-field-for-elementor-form'); ?>
                 </a>
 
 
                 <a class="button button-primary no-pro-buy-btn" target="_blank" href="https://coolformkit.com/pricing/?utm_source=<?php echo esc_attr($first_plugin); ?>&utm_medium=inside&utm_campaign=get_pro&utm_content=license_dashboard">
-                    <?php esc_html_e('No', 'cool-formkit'); ?>
+                    <?php esc_html_e('No', 'country-code-field-for-elementor-form'); ?>
                 </a>
             </div>
 

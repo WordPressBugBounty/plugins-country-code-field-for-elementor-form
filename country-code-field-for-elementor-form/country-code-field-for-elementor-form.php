@@ -3,13 +3,13 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.4.7
+ * Version: 1.6.1
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
  * License:GPL2
- * Text Domain:country-code-for-elementor-form-telephone-field
- * Elementor tested up to: 3.32.2
- * Elementor Pro tested up to: 3.32.1
+ * Text Domain:country-code-field-for-elementor-form
+ * Elementor tested up to: 3.35.0
+ * Elementor Pro tested up to: 3.35.0
  *
  * @package ccfef
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.4.7' );
+	define( 'CCFEF_VERSION', '1.6.1' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -74,8 +74,9 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'ccfef_plugins_loaded' ) );
 			add_action( 'init', array( $this, 'is_compatible' ) );
 			add_action( 'init', array( $this, 'ccfef_load_add_on' ) );
+			add_action('init', array($this, 'formdb_marketing_hello_plus'));
 			add_filter( 'plugin_row_meta', [ $this, 'plugin_row_meta' ], 10, 2 );
-
+			add_action( 'elementor_pro/forms/actions/register', array($this,'ccfef_register_new_form_actions') );
         	
 			$this->includes();
 		}
@@ -86,14 +87,48 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		
 		}
 
+		public function formdb_marketing_hello_plus(){
+
+			if ( !is_plugin_active( 'sb-elementor-contact-form-db/sb_elementor_contact_form_db.php' ) && !defined("formdb_hello_plus_marketing_editor")){
+
+				define("formdb_hello_plus_marketing_editor", true);
+
+				require_once CCFEF_PLUGIN_DIR . 'includes/helloplus_loader.php';
+				new HelloPlus_Widget_Loader();
+			}
+			
+		}
+
+		public function ccfef_register_new_form_actions($form_actions_registrar){
+
+			if($this->is_field_enabled('country_code')){
+
+
+
+				if ( !is_plugin_active( 'sb-elementor-contact-form-db/sb_elementor_contact_form_db.php' ) && !defined("formdb_elementor_marketing_editor")){
+
+					define("formdb_elementor_marketing_editor", true);
+
+					include_once( __DIR__ .  '/includes/class-form-to-sheet.php' );
+					$form_actions_registrar->register( new \Sheet_Action() );
+
+				}
+
+			}
+		}
+
+		private function is_field_enabled($field_key) {
+			$enabled_elements = get_option('cfkef_enabled_elements', array());
+			return in_array(sanitize_key($field_key), array_map('sanitize_key', $enabled_elements));
+		}
+
 		/**
 		 * Load plugin text domain for translation
 		 */
 		public function ccfef_plugins_loaded() {
-			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) && !is_plugin_active( 'hello-plus/hello-plus.php' )) {
 				return false;
 			}
-			load_plugin_textdomain( 'country-code-for-elementor-form-telephone-field', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 			if ( is_admin() ) {
 				require_once CCFEF_PLUGIN_DIR . 'admin/feedback/ccfef-users-feedback.php';
@@ -126,8 +161,8 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 
             $notice = [
 
-                'title' => __('Elementor Form Addons by Cool Plugins', 'cool-formkit-for-elementor-forms'),
-                'message' => __('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'cool-plugins-feedback'),
+                'title' => __('Elementor Form Addons by Cool Plugins', 'country-code-field-for-elementor-form'),
+                'message' => __('Help us make this plugin more compatible with your site by sharing non-sensitive site data.', 'country-code-field-for-elementor-form'),
                 'pages' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'],
                 'always_show_on' => ['cool-formkit','cfkef-entries','cool-formkit&tab=recaptcha-settings'], // This enables auto-show
                 'plugin_name'=>'ccfef'
@@ -136,9 +171,10 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
             \CPFM_Feedback_Notice::cpfm_register_notice('cool_forms', $notice);
 
                 if (!isset($GLOBALS['cool_plugins_feedback'])) {
+					// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                     $GLOBALS['cool_plugins_feedback'] = [];
                 }
-                
+                // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
                 $GLOBALS['cool_plugins_feedback']['cool_forms'][] = $notice;
            
             });
@@ -181,7 +217,9 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 				return false;
 			}
 			if ( $plugin == plugin_basename( __FILE__ ) ) {
-				exit( wp_redirect( admin_url( 'admin.php?page=cool-formkit' ) ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=cool-formkit' ) );
+				exit;
+
 			}	
 		}
 		/**
@@ -195,9 +233,8 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		 * Include country field add-on register file
 		 */
 		public function ccfef_load_add_on() {
-			load_plugin_textdomain( 'country-code-for-elementor-form-telephone-field', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
-			if(get_option('country_code', true)){
+			if($this->is_field_enabled('country_code')){
 
 				include CCFEF_PLUGIN_DIR . 'includes/register/class-ccfef-country-code-register.php';
 				CFEFP_COUNTRY_FIELD_REGISTER::get_instance();
@@ -245,10 +282,10 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 				// translators: %1$s replace with Country Code For Elementor Form Telephone Field & %2$s replace with Elementor Pro.
 				esc_html__(
 					'%1$s requires %2$s to be installed and activated.',
-					'country-code-for-elementor-form-telephone-field'
+					'country-code-field-for-elementor-form'
 				),
-				esc_html__( 'Country Code For Elementor Form Telephone Field', 'country-code-for-elementor-form-telephone-field' ),
-				esc_html__( 'Elementor Pro', 'country-code-for-elementor-form-telephone-field' ),
+				esc_html__( 'Country Code For Elementor Form Telephone Field', 'country-code-field-for-elementor-form' ),
+				esc_html__( 'Elementor Pro', 'country-code-field-for-elementor-form' ),
 			);
 			printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', esc_html( $message ) );
 			deactivate_plugins( plugin_basename( __FILE__ ) );
@@ -302,7 +339,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 			if ( CCFEF_PLUGIN_BASE === $plugin_file ) {
 				$row_meta = [
-					'docs' => '<a href="https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins_list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', '' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'cfef' ) . '</a>'
+					'docs' => '<a href="https://coolplugins.net/add-country-code-telephone-elementor-form/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=plugins_list" aria-label="' . esc_attr( esc_html__( 'Country Code Documentation', 'country-code-field-for-elementor-form' ) ) . '" target="_blank">' . esc_html__( 'Docs & FAQs', 'country-code-field-for-elementor-form' ) . '</a>'
 				];
 
 				$plugin_meta = array_merge( $plugin_meta, $row_meta );

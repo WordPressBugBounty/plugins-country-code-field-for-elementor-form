@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 // Ensure the file is being accessed through the WordPress admin area
 if (!defined('ABSPATH')) {
     die;
@@ -39,7 +40,8 @@ if (!empty($plugins_dates)) {
     $first_plugin = 'ccfef_plugin';
 }
 
-$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'form-elements';
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$tab = isset($_GET['tab']) ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'form-elements';
 
 
 
@@ -47,7 +49,7 @@ $form_elements = array(
 
 
     'whatsapp_redirect' => array(
-        'label' => __('Whatsapp Redirect', 'cool-formkit'),
+        'label' => __('Whatsapp Redirect', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/whatsapp-redirect-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/whatsapp-redirection-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/whatsapp-icon-min.svg',
@@ -55,98 +57,98 @@ $form_elements = array(
     ),
 
     'range_slider' => array(
-        'label' => __('Range Slider', 'cool-formkit'),
+        'label' => __('Range Slider', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/range-slider-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/range-slider-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/range-slider-min.svg',
         'pro' => true
     ),
     'calculator_field' => array(
-        'label' => __('Calculator Field', 'cool-formkit'),
+        'label' => __('Calculator Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/calculator-for-elementor/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/calculator-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/calculator-field-min.svg',
         'pro' => true
     ),
     'rating_field' => array(
-        'label' => __('Rating Field', 'cool-formkit'),
+        'label' => __('Rating Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/rating-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/rating-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/rating-field-min.svg',
         'pro' => true
     ),
     'signature_field' => array(
-        'label' => __('Signature Field', 'cool-formkit'),
+        'label' => __('Signature Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/signature-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/signature-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/signature.svg',
         'pro' => true
     ),
     'image_radio' => array(
-        'label' => __('Image Radio', 'cool-formkit'),
+        'label' => __('Image Radio', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/image-radio-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-image-radio-field/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/image-radio-min.svg',
         'pro' => true
     ),
     'radio_checkbox_styler' => array(
-        'label' => __('Radio & Checkbox Styler', 'cool-formkit'),
+        'label' => __('Radio & Checkbox Styler', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/checkbox-radio-styles-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/style-radio-checkbox-elementor-form/?utm_source=cfkef_plugin&&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/radio-styler-min.svg',
         'pro' => true
     ),
     'label_styler' => array(
-        'label' => __('Label Styler', 'cool-formkit'),
+        'label' => __('Label Styler', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/label-styler-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/label-styler-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/label-style-min.svg',
         'pro' => true
     ),
     'select2' => array(
-        'label' => __('Select2', 'cool-formkit'),
+        'label' => __('Select2', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/select2-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/select-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/select2-field-min.svg',
         'pro' => true
     ),
     'WYSIWYG' => array(
-        'label' => __('WYSIWYG', 'cool-formkit'),
+        'label' => __('WYSIWYG', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/wysiwyg-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-wysiwyg-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/WYSIWYG-min.svg',
         'pro' => true
     ),
     'confirm_dialog' => array(
-        'label' => __('Confirm Dialog Box', 'cool-formkit'),
+        'label' => __('Confirm Dialog Box', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/confirm-dialog-box-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-confirm-dialog-popup/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/dialog-box-min.svg',
         'pro' => true
     ),
     'restrict_date' => array(
-        'label' => __('Restrict Date', 'cool-formkit'),
+        'label' => __('Restrict Date', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/restrict-date-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/restrict-date-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/restrict-date-min.svg',
         'pro' => true
     ),
     'currency_field' => array(
-        'label' => __('Currency Field', 'cool-formkit'),
+        'label' => __('Currency Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/currency-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-currency-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/currency-field-min.svg',
         'pro' => true
     ),
     'month_week_field' => array(
-        'label' => __('Month/Week Field', 'cool-formkit'),
+        'label' => __('Month/Week Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/month-week-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-month-week/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/month-week-field-min.svg',
         'pro' => true
     ),
     'cloudflare_recaptcha' => array(
-        'label' => __('Cloudflare Turnstile', 'cool-formkit'),
+        'label' => __('Cloudflare Turnstile', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/cloudflare-turnstile-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-cloudflare-turnstile-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/cloudflare-icon-min.svg',
@@ -154,7 +156,7 @@ $form_elements = array(
     ),
 
     'h_recaptcha' => array(
-        'label' => __('hCAPTCHA', 'cool-formkit'),
+        'label' => __('hCAPTCHA', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/hcaptcha-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/add-hcaptcha-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/hcaptcha-icon-min.svg',
@@ -162,7 +164,7 @@ $form_elements = array(
     ),
     'toggle_field' => array(
 
-        'label' => __('Toggle Field', 'cool-formkit'),
+        'label' => __('Toggle Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/toggle-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/toggle-field-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/toggle-field.svg',
@@ -171,7 +173,7 @@ $form_elements = array(
 
 
     'conditional_mailchimp' => array(
-        'label' => __('Conditional MailChimp', 'cool-formkit'),
+        'label' => __('Conditional MailChimp', 'country-code-field-for-elementor-form'),
         'demo' => str_replace('utm_source=', 'utm_source=' . esc_attr($first_plugin),'https://docs.coolplugins.net/doc/conditional-mailchimp-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . esc_attr($first_plugin),'https://coolformkit.com/features/conditional-mailchimp-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/mailchimp-logo.svg',
@@ -182,15 +184,15 @@ $form_elements = array(
 
 
 $condition_plugin_features = array(
-    'condtional_logic' => array(
-        'label' => __('Conditional Logic', 'cool-formkit'),
+    'conditional_logic' => array(
+        'label' => __('Conditional Logic', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-fields/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/conditional-logic-1-min.svg'
     ),
 
     'submit_condition' => array(
-        'label' => __('Submit Conditions', 'cool-formkit'),
+        'label' => __('Submit Conditions', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-submit-button-conditions/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/conditional-button-min.svg',
@@ -199,7 +201,7 @@ $condition_plugin_features = array(
 
 
     'redirect_conditionaly' => array(
-        'label' => __('Redirect Conditionaly', 'cool-formkit'),
+        'label' => __('Redirect Conditionaly', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-redirect-elementor-form-on-submit/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/redirect-conditionally-min.svg',
@@ -208,7 +210,7 @@ $condition_plugin_features = array(
 
 
     'email_conditionaly' => array(
-        'label' => __('Email Conditionaly', 'cool-formkit'),
+        'label' => __('Email Conditionaly', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/conditional-email-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/conditional-email-1-min.svg',
@@ -218,7 +220,7 @@ $condition_plugin_features = array(
 
 
     'multicondtion_or_logic' => array(
-        'label' => __('Multiple OR Conditions', 'cool-formkit'),
+        'label' => __('Multiple OR Conditions', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/and-or-conditional-logic-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/or-condition.svg',
@@ -228,7 +230,7 @@ $condition_plugin_features = array(
 
 
     'more_operators' => array(
-        'label' => __('More Operators', 'cool-formkit'),
+        'label' => __('More Operators', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/elementor-form-conditional-logic-operators/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/more-opreators.svg',
@@ -246,7 +248,7 @@ $condition_plugin_features = array(
 
 $country_field_features = array(
     'country_code' => array(
-        'label' => __('Country code', 'cool-formkit'),
+        'label' => __('Country code', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/country-code-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/country-code-min.svg'
@@ -254,7 +256,7 @@ $country_field_features = array(
 
 
     'country_state' => array(
-        'label' => __('State Field', 'cool-formkit'),
+        'label' => __('State Field', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/country-and-state-field-for-elementor-form/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/state-field.svg',
@@ -262,7 +264,7 @@ $country_field_features = array(
     ),
 
     'auto_select_country' => array(
-        'label' => __('Auto Detect Country', 'cool-formkit'),
+        'label' => __('Auto Detect Country', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/auto-detect.svg',
@@ -276,13 +278,13 @@ $country_field_features = array(
 
 $form_mask_features = array(
     'form_input_mask' => array(
-        'label' => __('Field Masking', 'cool-formkit'),
+        'label' => __('Field Masking', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/input-mask-min.svg'
     ),
     'hello_plus_support' => array(
-        'label' => __('Hello Plus Support', 'cool-formkit'),
+        'label' => __('Hello Plus Support', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/hello-plus-support.svg',
@@ -290,7 +292,7 @@ $form_mask_features = array(
     ),
 
     'advanced_fields' => array(
-        'label' => __('Advanced Fields', 'cool-formkit'),
+        'label' => __('Advanced Fields', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/advanced-field.svg',
@@ -303,13 +305,13 @@ $form_mask_features = array(
 
 $input_form_mask_features = array(
     'form_input_mask' => array(
-        'label' => __('Input Mask', 'cool-formkit'),
+        'label' => __('Input Mask', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins-dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/doc/input-masks-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/input-mask-min.svg'
     ),
     'hello_plus_support' => array(
-        'label' => __('Hello Plus Support', 'cool-formkit'),
+        'label' => __('Hello Plus Support', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://docs.coolplugins.net/plugin/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/hello-plus-support.svg',
@@ -317,7 +319,7 @@ $input_form_mask_features = array(
     ),
 
     'advanced_fields' => array(
-        'label' => __('Advanced Fields', 'cool-formkit'),
+        'label' => __('Advanced Fields', 'country-code-field-for-elementor-form'),
         'how_to' => str_replace('utm_source=', 'utm_source=' . $first_plugin, 'https://coolformkit.com/features/?utm_source=&utm_medium=inside&utm_campaign=demo&utm_content=dashboard'),
         'demo' => str_replace('utm_source=cfkef_plugin', 'utm_source=' . $first_plugin, 'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=cfkef_plugin&utm_medium=inside&utm_campaign=docs&utm_content=dashboard'),
         'icon' => CCFEF_PLUGIN_URL . 'assets/icons/advanced-field.svg',
@@ -351,7 +353,7 @@ $input_form_mask_features = array(
                     <div class="wrapper-header">
                         <div class="cfkef-save-all">
                             <div class="cfkef-title-desc">
-                                <h2><?php esc_html_e('Conditional Fields For Elementor Form', 'cool-formkit'); ?></h2>
+                                <h2><?php esc_html_e('Conditional Fields For Elementor Form', 'country-code-field-for-elementor-form'); ?></h2>
                             </div>
                             <div class="cfkef-save-controls">
                                 <?php
@@ -390,16 +392,16 @@ $input_form_mask_features = array(
 
                                     if ($is_conditional_field_installed) {
 
-                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Conditional Field plugin to be activated">' . esc_html__('Activate', 'cfef') . '</a>';
+                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Conditional Field plugin to be activated">' . esc_html__('Activate', 'country-code-field-for-elementor-form') . '</a>';
                                     } else if (!$is_conditional_field_installed) {
 
-                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Conditional Field plugin to be install">' . esc_html__('Install', 'cfef') . '</a>';
+                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Conditional Field plugin to be install">' . esc_html__('Install', 'country-code-field-for-elementor-form') . '</a>';
                                     }
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
                                         'https://coolplugins.net/product/conditional-fields-for-elementor-form/?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard#pricing'
-                                    ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
+                                    ) . '" class="button">' . esc_html__('Get Pro', 'country-code-field-for-elementor-form') . '</a>';
                                 }
                                 ?>
                             </div>
@@ -446,7 +448,7 @@ $input_form_mask_features = array(
                                                 <h4>
                                                     <?php echo esc_html($element['label']); ?>
                                                     <?php if (!empty($element['pro'])): ?>
-                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                     <?php endif; ?>
 
                                                     <?php if (in_array($key, $popular_elements)): ?>
@@ -498,7 +500,7 @@ $input_form_mask_features = array(
                                                 <h4>
                                                     <?php echo esc_html($element['label']); ?>
                                                     <?php if (!empty($element['pro'])): ?>
-                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                     <?php endif; ?>
 
                                                     <?php if (in_array($key, $popular_elements)): ?>
@@ -519,8 +521,7 @@ $input_form_mask_features = array(
                                             </div>
 
                                             <label class="cfkef-toggle-switch" style="<?php echo !$is_condtional_field_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('condtional_logic'));
-                                                                                                                        ?> class="cfkef-element-toggle"
+                                                <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements));?> class="cfkef-element-toggle"
                                                     <?php disabled(!$is_condtional_field_active); ?>>
                                                 <?php if (!empty($element['pro'])): ?>
                                                     <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -532,7 +533,7 @@ $input_form_mask_features = array(
 
                                             </label>
                                             <?php if (!$is_condtional_field_active): ?>
-                                                <div class="cfkef-tooltip"><?php esc_html_e('Requires Conditional Field plugin to be activated', 'cool-formkit'); ?></div>
+                                                <div class="cfkef-tooltip"><?php esc_html_e('Requires Conditional Field plugin to be activated', 'country-code-field-for-elementor-form'); ?></div>
                                             <?php endif; ?>
                                         </div>
 
@@ -544,7 +545,7 @@ $input_form_mask_features = array(
                         </div>
 
                         <div class="cfk-buttons">
-                            <button type="submit" class="button button-primary "><?php esc_html_e('Save Changes', 'cool-formkit'); ?></button>
+                            <button type="submit" class="button button-primary "><?php esc_html_e('Save Changes', 'country-code-field-for-elementor-form'); ?></button>
                         </div>
 
                     </div>
@@ -556,7 +557,7 @@ $input_form_mask_features = array(
                     <div class="wrapper-header">
                         <div class="cfkef-save-all">
                             <div class="cfkef-title-desc">
-                                <h2><?php esc_html_e('Country Code For Tel Field', 'cool-formkit'); ?></h2>
+                                <h2><?php esc_html_e('Country Code For Tel Field', 'country-code-field-for-elementor-form'); ?></h2>
                             </div>
                             <div class="cfkef-save-controls">
 
@@ -597,16 +598,16 @@ $input_form_mask_features = array(
 
                                     if ($is_country_field_installed) {
 
-                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Country Code Field plugin to be activated">' . esc_html__('Activate', 'cfef') . '</a>';
+                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Country Code Field plugin to be activated">' . esc_html__('Activate', 'country-code-field-for-elementor-form') . '</a>';
                                     } else if (!$is_country_field_installed) {
 
-                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Country Code Field plugin to be install">' . esc_html__('Install', 'cfef') . '</a>';
+                                        echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires Country Code Field plugin to be install">' . esc_html__('Install', 'country-code-field-for-elementor-form') . '</a>';
                                     }
                                 } else {
 
                                     echo '<a target="_blank" href="' . esc_url(
                                         'https://coolformkit.com/pricing?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard'
-                                    ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
+                                    ) . '" class="button">' . esc_html__('Get Pro', 'country-code-field-for-elementor-form') . '</a>';
                                 }
                                 ?>
                             </div>
@@ -648,7 +649,7 @@ $input_form_mask_features = array(
                                                 <h4>
                                                     <?php echo esc_html($element['label']); ?>
                                                     <?php if (!empty($element['pro'])): ?>
-                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                     <?php endif; ?>
 
                                                     <?php if (in_array($key, $popular_elements)): ?>
@@ -700,7 +701,7 @@ $input_form_mask_features = array(
                                                 <h4>
                                                     <?php echo esc_html($element['label']); ?>
                                                     <?php if (!empty($element['pro'])): ?>
-                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                        <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                     <?php endif; ?>
 
                                                     <?php if (in_array($key, $popular_elements)): ?>
@@ -721,8 +722,7 @@ $input_form_mask_features = array(
                                             </div>
 
                                             <label class="cfkef-toggle-switch" style="<?php echo !$is_country_field_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('country_code'));
-                                                                                                                        ?> class="cfkef-element-toggle"
+                                                <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements));?> class="cfkef-element-toggle"
                                                     <?php disabled(!$is_country_field_active); ?>>
                                                 <?php if (!empty($element['pro'])): ?>
                                                     <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -734,7 +734,7 @@ $input_form_mask_features = array(
 
                                             </label>
                                             <?php if (!$is_country_field_active): ?>
-                                                <div class="cfkef-tooltip"><?php esc_html_e('Requires Country Code Field plugin to be activated', 'cool-formkit'); ?></div>
+                                                <div class="cfkef-tooltip"><?php esc_html_e('Requires Country Code Field plugin to be activated', 'country-code-field-for-elementor-form'); ?></div>
                                             <?php endif; ?>
                                         </div>
 
@@ -743,7 +743,7 @@ $input_form_mask_features = array(
                             </div>
                         </div>
                         <div class="cfk-buttons">
-                            <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'cool-formkit'); ?></button>
+                            <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'country-code-field-for-elementor-form'); ?></button>
                         </div>
                     </div>
 
@@ -772,7 +772,7 @@ $input_form_mask_features = array(
                         <div class="wrapper-header">
                             <div class="cfkef-save-all">
                                 <div class="cfkef-title-desc">
-                                    <h2><?php esc_html_e('Input Mask Elementor Form Fields', 'cool-formkit'); ?></h2>
+                                    <h2><?php esc_html_e('Input Mask Elementor Form Fields', 'country-code-field-for-elementor-form'); ?></h2>
                                 </div>
                                 <div class="cfkef-save-controls">
 
@@ -815,7 +815,7 @@ $input_form_mask_features = array(
                                                     <h4>
                                                         <?php echo esc_html($element['label']); ?>
                                                         <?php if (!empty($element['pro'])): ?>
-                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                         <?php endif; ?>
 
                                                         <?php if (in_array($key, $popular_elements)): ?>
@@ -835,7 +835,7 @@ $input_form_mask_features = array(
                                                     </div>
                                                 </div>
                                                 <label class="cfkef-toggle-switch" >
-                                                    <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('form_input_mask')); ?> class="cfkef-element-toggle"
+                                                    <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements)); ?> class="cfkef-element-toggle"
                                                         <?php disabled(!empty($element['pro'])); ?>>
                                                     <?php if (!empty($element['pro'])): ?>
                                                         <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -852,7 +852,7 @@ $input_form_mask_features = array(
 
                                     <div class="cfk-buttons">
 
-                                        <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'cool-formkit'); ?></button>
+                                        <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'country-code-field-for-elementor-form'); ?></button>
                                     </div>
 
                                 
@@ -872,7 +872,7 @@ $input_form_mask_features = array(
                         <div class="wrapper-header">
                             <div class="cfkef-save-all">
                                 <div class="cfkef-title-desc">
-                                    <h2><?php esc_html_e('Form Input Masks for Elementor Form', 'cool-formkit'); ?></h2>
+                                    <h2><?php esc_html_e('Form Input Masks for Elementor Form', 'country-code-field-for-elementor-form'); ?></h2>
                                 </div>
                                 <div class="cfkef-save-controls">
 
@@ -913,16 +913,16 @@ $input_form_mask_features = array(
 
                                         if ($is_form_mask_installed) {
 
-                                            echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires form mask plugin to be activated">' . esc_html__('Activate', 'cfef') . '</a>';
+                                            echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-activate-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires form mask plugin to be activated">' . esc_html__('Activate', 'country-code-field-for-elementor-form') . '</a>';
                                         } else if (!$is_form_mask_installed) {
 
-                                            echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires form mask plugin to be install">' . esc_html__('Install', 'cfef') . '</a>';
+                                            echo '<a target="_blank" class="button need-activation  cfkef-has-tooltip cfkef-install-plugin-btn" data-action="' . esc_attr($data_action) . '" data-slug="' . esc_attr($data_slug) . '" data-init="' . esc_attr($data_init) . '" title="Requires form mask plugin to be install">' . esc_html__('Install', 'country-code-field-for-elementor-form') . '</a>';
                                         }
                                     } else {
 
                                         echo '<a target="_blank" href="' . esc_url(
                                             'https://coolformkit.com/pricing?utm_source=' . urlencode($first_plugin) . '&utm_medium=inside&utm_campaign=get_pro&utm_content=dashboard'
-                                        ) . '" class="button">' . esc_html__('Get Pro', 'cfef') . '</a>';
+                                        ) . '" class="button">' . esc_html__('Get Pro', 'country-code-field-for-elementor-form') . '</a>';
                                     }
                                     ?>
                                 </div>
@@ -966,7 +966,7 @@ $input_form_mask_features = array(
                                                     <h4>
                                                         <?php echo esc_html($element['label']); ?>
                                                         <?php if (!empty($element['pro'])): ?>
-                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                         <?php endif; ?>
 
                                                         <?php if (in_array($key, $popular_elements)): ?>
@@ -1018,7 +1018,7 @@ $input_form_mask_features = array(
                                                     <h4>
                                                         <?php echo esc_html($element['label']); ?>
                                                         <?php if (!empty($element['pro'])): ?>
-                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                            <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                                         <?php endif; ?>
 
                                                         <?php if (in_array($key, $popular_elements)): ?>
@@ -1039,8 +1039,7 @@ $input_form_mask_features = array(
                                                 </div>
 
                                                 <label class="cfkef-toggle-switch" style="<?php echo !$is_form_mask_active ? 'opacity: 0.2; ' : ''; ?>">
-                                                    <input type="checkbox" name="<?php echo esc_attr($key); ?>" value="1" <?php checked(get_option('form_input_mask'));
-                                                                                                                            ?> class="cfkef-element-toggle"
+                                                    <input type="checkbox" name="cfkef_enabled_elements[]" value="<?php echo esc_attr($key); ?>" <?php checked(in_array($key, $enabled_elements)); ?> class="cfkef-element-toggle"
                                                         <?php disabled(!$is_form_mask_active); ?>>
                                                     <?php if (!empty($element['pro'])): ?>
                                                         <a href="<?php echo esc_url($element['how_to']) ?>" target="_blank">
@@ -1052,7 +1051,7 @@ $input_form_mask_features = array(
 
                                                 </label>
                                                 <?php if (!$is_form_mask_active): ?>
-                                                    <div class="cfkef-tooltip"><?php esc_html_e('Requires form mask plugin to be install', 'cool-formkit'); ?></div>
+                                                    <div class="cfkef-tooltip"><?php esc_html_e('Requires form mask plugin to be install', 'country-code-field-for-elementor-form'); ?></div>
                                                 <?php endif; ?>
                                             </div>
 
@@ -1061,7 +1060,7 @@ $input_form_mask_features = array(
                                 </div>
                             </div>
                             <div class="cfk-buttons">
-                                <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'cool-formkit'); ?></button>
+                                <button type="submit" class="button button-primary"><?php esc_html_e('Save Changes', 'country-code-field-for-elementor-form'); ?></button>
                             </div>
 
                         </div>
@@ -1077,7 +1076,7 @@ $input_form_mask_features = array(
                     <div class="wrapper-header">
                         <div class="cfkef-save-all">
                             <div class="cfkef-title-desc">
-                                <h2><?php esc_html_e('What is Cool FormKit?', 'cool-formkit'); ?></h2>
+                                <h2><?php esc_html_e('What is Cool FormKit?', 'country-code-field-for-elementor-form'); ?></h2>
                             </div>
 
                             <div class="cfkef-save-controls">
@@ -1102,7 +1101,7 @@ $input_form_mask_features = array(
                                         <h4>
                                             <?php echo esc_html($element['label']); ?>
                                             <?php if (!empty($element['pro'])): ?>
-                                                <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'cool-formkit'); ?></a></span>
+                                                <span class="cfkef-label-popular"><a href="<?php echo esc_url($element['how_to']) ?>" target="_blank"><?php esc_html_e('Pro', 'country-code-field-for-elementor-form'); ?></a></span>
                                             <?php endif; ?>
 
                                             

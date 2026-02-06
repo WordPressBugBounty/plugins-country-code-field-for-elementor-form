@@ -50,10 +50,16 @@ class Country_Code_Elementor_Page {
 
     private static function cfkef_current_page($slug)
     {
-        $current_page = isset($_GET['page']) ? esc_html( wp_unslash( $_GET['page'] ) ) :
-                 ( isset($_POST['page']) ? esc_html( wp_unslash( $_POST['page'] ) ) :
-                 ( isset($_GET['post_type']) ? esc_html( wp_unslash( $_GET['post_type'] ) ) :
-                 ( isset($_POST['post_type']) ? esc_html( wp_unslash( $_POST['post_type'] ) ) : '' )));
+        $current_page = '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        if ( isset( $_GET['page'] ) ) {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $current_page = sanitize_key( wp_unslash( $_GET['page'] ) );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        } elseif ( isset( $_GET['post_type'] ) ) {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $current_page = sanitize_key( wp_unslash( $_GET['post_type'] ) );
+        }
                  
         $status=false;
 

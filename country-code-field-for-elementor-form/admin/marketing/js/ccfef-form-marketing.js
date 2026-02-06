@@ -1,106 +1,123 @@
-jQuery(document).ready(function($) {
+(function ($) {
 
+    /* -------------------------------------------------
+     * NOTICE DISMISS HANDLER (Merged)
+     * ------------------------------------------------- */
+    $(document).on(
+        'click',
+        '.ccfef-dismiss-notice, .ccfef-dismiss-cross, .ccfef-tec-notice .notice-dismiss, [data-notice_id="formdb-marketing-elementor-form-submissions"] .e-notice__dismiss',
+        function (e) {
+            e.preventDefault();
 
-    $(document).on('click', '.ccfef-dismiss-notice, .ccfef-dismiss-cross, .ccfef-tec-notice .notice-dismiss', function(e) {
+            let $el = $(this);
+            let noticeType = $el.data('notice');
+            let nonce = $el.data('nonce');
 
-        e.preventDefault();
-        var $el = $(this);
-        var noticeType = $el.data('notice');
-        var nonce = $el.data('nonce');
-
-        if (noticeType == undefined) {
-
-            var noticeType = jQuery('.ccfef-tec-notice').data('notice')
-            var nonce = jQuery('.ccfef-tec-notice').data('nonce'); 
-        }
-
-        $.post(ajaxurl, {
-
-            action: 'ccfef_mkt_dismiss_notice',
-            notice_type: noticeType,
-            nonce: nonce
-
-        }, function(response) {
-
-            if (response.success) {
-
-                if (noticeType === 'cool_form') {
-                    $el.closest('.cool-form-wrp').fadeOut();
-                } else if (noticeType === 'tec_notice') {
-                    $el.closest('.ccfef-tec-notice').fadeOut();
-                }
+            // Fallback for Form DB marketing notices
+            if (!noticeType && typeof ccfefFormDBMarketing !== 'undefined') {
+                noticeType = ccfefFormDBMarketing.formdb_type;
+                nonce = ccfefFormDBMarketing.formdb_dismiss_nonce;
             }
-        });
 
-    });
+            // Fallback for TEC notice
+            if (!noticeType) {
+                noticeType = $('.ccfef-tec-notice').data('notice');
+                nonce = $('.ccfef-tec-notice').data('nonce');
+            }
 
-    $(document).on('click', '.ccfef-install-plugin', function(e) {
+            if (!noticeType || !nonce) return;
 
+            $.post(ajaxurl, {
+                action: 'ccfef_mkt_dismiss_notice',
+                notice_type: noticeType,
+                nonce: nonce
+            }, function (response) {
+                if (response.success) {
 
-        e.preventDefault();
+                    if (noticeType === 'cool_form') {
+                        $el.closest('.cool-form-wrp').fadeOut();
+                    } else if (noticeType === 'tec_notice') {
+                        $el.closest('.ccfef-tec-notice').fadeOut();
+                    }
+                }
+            });
+        }
+    );
 
-        var $form = $(this);
-        var $wrapper = $form.closest('.cool-form-wrp');
-        let button = $(this);
-        let plugin = button.data('plugin');
-        button.next('.ccfef-error-message').remove();
+    /* -------------------------------------------------
+     * INSTALL PLUGIN HANDLER (Merged)
+     * ------------------------------------------------- */
+    function installPlugin(btn, slugg) {
 
-        const slug = getPluginSlug(plugin);
+        let button = $(btn);
+        let $wrapper = button.closest('.cool-form-wrp');
+
+        const slug = getPluginSlug(slugg);
         if (!slug) return;
-        // Get the nonce from the button data attribute
-        let nonce = button.data('nonce');
+
+        const allowedSlugs = [
+            'extensions-for-elementor-form',
+            'conditional-fields-for-elementor-form',
+            'country-code-field-for-elementor-form',
+            'loop-grid-extender-for-elementor-pro',
+            'events-widgets-for-elementor-and-the-events-calendar',
+            'conditional-fields-for-elementor-form-pro',
+            'sb-elementor-contact-form-db',
+        ];
+        if (!slug || !allowedSlugs.includes(slug)) return;
+
+        let nonce =
+            button.data('nonce') ||
+            (typeof ccfefFormDBMarketing !== 'undefined' ? ccfefFormDBMarketing.nonce : null);
 
         button.text('Installing...').prop('disabled', true);
         disableAllOtherPluginButtonsTemporarily(slug);
 
         $.post(ajaxurl, {
+            action: 'ccfef_install_plugin',
+            slug: slug,
+            _wpnonce: nonce
+        }, function (response) {
 
-                action: 'ccfef_install_plugin',
-                slug: slug,
-                _wpnonce: nonce
-            },
+            const responseString = JSON.stringify(response);
+            const responseContainsPlugin = responseString.includes(slug);
 
-            function(response) {
-                const pluginSlug = slug;
-                const responseString = JSON.stringify(response);
-                const responseContainsPlugin = responseString.includes(pluginSlug);
+            // Special case: Country Code plugin
+            if (slug === 'country-code-field-for-elementor-form') {
+                const $pageHtml = $(response);
+                let $input = $pageHtml.find('input[name="country_code"]');
 
-                if (pluginSlug === 'country-code-field-for-elementor-form') {
-                    const $page_html = $(response);
-                    let $input_country_code = $page_html.find('input[name="country_code"]');
-
-                    if ($input_country_code.is(':disabled')) {
-                        showNotActivatedMessage($wrapper);
-                    } else {
-                        handlePluginActivation(button, slug, $wrapper);
-                    }
-                } else if (responseContainsPlugin) {
-                    handlePluginActivation(button, slug, $wrapper);
-                } else if (!responseContainsPlugin) {
+                if ($input.is(':disabled')) {
                     showNotActivatedMessage($wrapper);
                 } else {
-                    let errorMessage = 'Please try again or download plugin manually from WordPress.org</a>';
-                    $wrapper.find('.elementor-button-warning').remove();
-                    if (slug === 'events-widget') {
-                        jQuery('.ect-notice-widget').text(errorMessage)
-                    } else {
-                        $wrapper.find('.elementor-control-notice-main-actions').after(
-                            '<div class="elementor-control-notice elementor-button-warning">' +
-                            '<div class="elementor-control-notice-content">' +
-                            errorMessage +
-                            '</div></div>'
-                        );
-                    }
+                    handlePluginActivation(button, slug, $wrapper);
                 }
+                return;
             }
-        );
-    });
 
+            if (responseContainsPlugin) {
+                handlePluginActivation(button, slug, $wrapper);
 
+                if (
+                    typeof ccfefFormDBMarketing !== 'undefined' &&
+                    ccfefFormDBMarketing.redirect_to_formdb
+                ) {
+                    window.location.href = 'admin.php?page=formsdb';
+                }
 
-    // function for activation success
+            } else {
+                showNotActivatedMessage($wrapper);
+            }
+        });
+    }
+
+    /* -------------------------------------------------
+     * HELPERS
+     * ------------------------------------------------- */
+
     function handlePluginActivation(button, slug, $wrapper) {
-        button.text('Activated')
+        button
+            .text('Activated')
             .removeClass('e-btn e-info e-btn-1 elementor-button-success')
             .addClass('elementor-disabled')
             .prop('disabled', true);
@@ -110,8 +127,9 @@ jQuery(document).ready(function($) {
         let successMessage = 'Save & reload the page to start using the feature.';
 
         if (slug === 'events-widgets-for-elementor-and-the-events-calendar') {
-            successMessage = 'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
-            jQuery('.ccfef-tec-notice .ect-notice-widget').text(successMessage);
+            successMessage =
+                'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
+            $('.ccfef-tec-notice .ect-notice-widget').text(successMessage);
         } else {
             $wrapper.find('.elementor-control-notice-success').remove();
             $wrapper.find('.elementor-control-notice-main-actions').after(
@@ -123,7 +141,6 @@ jQuery(document).ready(function($) {
         }
     }
 
-    // function for "not activated" notice
     function showNotActivatedMessage($wrapper) {
         $wrapper.find('.elementor-control-notice-success').remove();
         $wrapper.find('.elementor-control-notice-main-actions').after(
@@ -135,12 +152,13 @@ jQuery(document).ready(function($) {
     }
 
     function getPluginSlug(plugin) {
-
         const slugs = {
             'cool-form-lite': 'extensions-for-elementor-form',
             'conditional': 'conditional-fields-for-elementor-form',
+            'country-code': 'country-code-field-for-elementor-form',
             'loop-grid': 'loop-grid-extender-for-elementor-pro',
             'events-widget': 'events-widgets-for-elementor-and-the-events-calendar',
+            'form-db': 'sb-elementor-contact-form-db',
             'conditional-pro': 'conditional-fields-for-elementor-form-pro'
         };
         return slugs[plugin];
@@ -150,10 +168,11 @@ jQuery(document).ready(function($) {
         const relatedSlugs = [
             'extensions-for-elementor-form',
             'conditional-fields-for-elementor-form',
+            'country-code-field-for-elementor-form'
         ];
 
-        jQuery('.ccfef-install-plugin').each(function() {
-            const $btn = jQuery(this);
+        $('.ccfef-install-plugin').each(function () {
+            const $btn = $(this);
             const btnSlug = getPluginSlug($btn.data('plugin'));
 
             if (btnSlug !== activeSlug && relatedSlugs.includes(btnSlug)) {
@@ -162,33 +181,95 @@ jQuery(document).ready(function($) {
         });
     }
 
-
     function disableOtherPluginButtons(activatedSlug) {
         const relatedSlugs = [
             'extensions-for-elementor-form',
             'conditional-fields-for-elementor-form',
+            'country-code-field-for-elementor-form'
         ];
 
         if (!relatedSlugs.includes(activatedSlug)) return;
 
-        jQuery('.ccfef-install-plugin').each(function() {
-            const $btn = jQuery(this);
+        $('.ccfef-install-plugin').each(function () {
+            const $btn = $(this);
             const btnSlug = getPluginSlug($btn.data('plugin'));
 
             if (btnSlug !== activatedSlug && relatedSlugs.includes(btnSlug)) {
-                $btn.text('Already Installed')
+                $btn
+                    .text('Already Installed')
                     .addClass('elementor-disabled')
                     .prop('disabled', true)
                     .removeClass('e-btn e-info e-btn-1 elementor-button-success');
 
                 $btn.closest('.cool-form-wrp').hide();
 
-                // Hide associated switcher controls
+                if (btnSlug === 'country-code-field-for-elementor-form') {
+                    $('[data-setting="ccfef-mkt-country-conditions"]').closest('.elementor-control').hide();
+                }
                 if (btnSlug === 'conditional-fields-for-elementor-form') {
-                    $('[data-setting="cccfef-mkt-conditional-conditions"]').closest('.elementor-control').hide();
+                    $('[data-setting="ccfef-mkt-conditional-conditions"]').closest('.elementor-control').hide();
                 }
             }
         });
     }
 
-});
+    if(typeof elementor !== 'undefined' && elementor) {
+        const callbackfunction = elementor.modules.controls.BaseData.extend({
+            onRender:(data)=>{
+
+
+                if(!data.el) return;
+
+                const customNotice=data.el.querySelector('.cool-form-wrp');
+
+                if(!customNotice) return;
+
+                const installBtns=data.el.querySelectorAll('button.ccfef-install-plugin');
+
+                if(installBtns.length === 0) return;
+
+
+                installBtns.forEach(btn=>{
+                    const installSlug=btn.dataset.plugin;
+
+                    btn.addEventListener('click',()=>{
+                        installPlugin(jQuery(btn),installSlug)
+                    });
+                });
+            },
+        });
+
+        // Initialize when Elementor is ready
+        $(window).on('elementor:init', function () { 
+            elementor.addControlView('raw_html', callbackfunction);
+        });
+    }else{
+
+
+        $(document).ready(function ($) {
+
+            const customNotice = $('.cool-form-wrp, .ccfef-tec-notice, [data-notice_id="formdb-marketing-elementor-form-submissions"], .e-form-submissions-search');
+
+            if(customNotice.length === 0) return;
+
+            const installBtns = customNotice.find('button.ccfef-install-plugin, a.ccfef-install-plugin');
+
+            if(installBtns.length === 0) return;  
+            
+
+            installBtns.each(function(){
+                const btn = this;
+                const installSlug = btn.dataset.plugin;
+
+                $(btn).on('click', function(){
+                    if(installSlug) {
+                        installPlugin($(btn), installSlug);
+                    } else {
+                        installPlugin($(btn), ccfefFormDBMarketing.plugin);
+                    }
+                });
+            });
+        })
+    }
+
+})(jQuery);
