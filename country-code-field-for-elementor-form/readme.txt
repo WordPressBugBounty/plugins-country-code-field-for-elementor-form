@@ -5,10 +5,10 @@ Tags: country code, phone field, elementor form, elementor, elementor form build
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.2
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 3.35.0
+Elementor tested up to: 3.35.4
 Elementor Pro tested up to: 3.35.0
 
 Add a country code dropdown with flags to Elementor form phone field for valid international numbers. Also works with Hello Plus form widget.
@@ -118,6 +118,8 @@ This plugin makes use of the following third-party library:
   - GitHub: [https://github.com/jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)  
   - License: [MIT License](https://github.com/jackocnr/intl-tel-input/blob/master/LICENSE)   
 
+**Use of 3rd Party Services:** This plugin connects to the Cool Plugins feedback server only for optional usage data sharing and voluntary feedback submission (for example, during plugin deactivation). Data is transmitted solely after explicit user consent. No hidden tracking is performed, and no frontend visitor or site user data is collected.  For more details, please review our [Data Usage Policy](https://my.coolplugins.net/terms/usage-tracking/), [TOS](https://my.coolplugins.net/terms/), and [Privacy Policy](https://my.coolplugins.net/terms/privacy-policy/).
+
 == Screenshots ==  
 
 1. Country Code for Elementor Form Telephone Field Preview 
@@ -192,6 +194,10 @@ Please report security bugs found in the source code of the Country Code For Ele
 - [Cool FormKit Documentation](https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=docs&utm_content=installation)
 
 == Changelog ==
+
+= 1.6.2 | Feb 17, 2026 =
+* Improved: Other plugin recommendations for Elementor users.
+* Fixed: Fixed issues reported by “Plugin Check” plugin.
 
 = 1.6.1 | Feb 05, 2026 =
 * Improved: Code improvements.

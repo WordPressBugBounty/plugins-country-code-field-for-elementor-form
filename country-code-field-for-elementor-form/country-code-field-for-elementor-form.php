@@ -3,12 +3,13 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.6.1
+ * Version: 1.6.2
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
- * License:GPL2
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:country-code-field-for-elementor-form
- * Elementor tested up to: 3.35.0
+ * Elementor tested up to: 3.35.4
  * Elementor Pro tested up to: 3.35.0
  *
  * @package ccfef
@@ -20,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.6.1' );
+	define( 'CCFEF_VERSION', '1.6.2' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -39,6 +40,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 	/**
 	 * Main Class start here
 	 */
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 	final class Country_Code_Field_For_Elementor_Form {
 		/**
 		 * Plugin instance.
@@ -90,7 +92,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 		public function formdb_marketing_hello_plus(){
 
 			if ( !is_plugin_active( 'sb-elementor-contact-form-db/sb_elementor_contact_form_db.php' ) && !defined("formdb_hello_plus_marketing_editor")){
-
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 				define("formdb_hello_plus_marketing_editor", true);
 
 				require_once CCFEF_PLUGIN_DIR . 'includes/helloplus_loader.php';
@@ -107,6 +109,7 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 
 				if ( !is_plugin_active( 'sb-elementor-contact-form-db/sb_elementor_contact_form_db.php' ) && !defined("formdb_elementor_marketing_editor")){
 
+					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 					define("formdb_elementor_marketing_editor", true);
 
 					include_once( __DIR__ .  '/includes/class-form-to-sheet.php' );

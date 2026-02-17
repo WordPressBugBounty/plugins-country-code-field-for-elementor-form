@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	/**
 	 * Class for creating the add-on of country codes to tel fields.
 	 */
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class CFEFP_COUNTRY_FIELD_REGISTER {
 	/**
 	 * Plugin instance.

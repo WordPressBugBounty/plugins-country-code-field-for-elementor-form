@@ -25,6 +25,7 @@ if (!defined('ABSPATH')) {
  * @subpackage Cool_FormKit/admin
  */
 if(!class_exists('CFEF_Admin')) {
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
 class CFEF_Admin {
 
     /**
@@ -193,6 +194,10 @@ class CFEF_Admin {
             wp_send_json_error( array( 'message' => $skin->get_error_messages() ) );
         }
 
+        $parts = explode('-', $plugin_slug);
+		$two_parts_plugin_slug = implode('-', array_slice($parts, 0, 2));
+		update_option( $two_parts_plugin_slug . '-install-by', 'ccfef_plugin' );
+
         wp_send_json_success( array( 'message' => 'Plugin installed successfully' ) );
     }
 
@@ -258,6 +263,9 @@ class CFEF_Admin {
         $conditional_fields_pro_installed_date = get_option( 'cfefp-installDate' );
         $country_code_installed_date = get_option( 'ccfef-installDate' );
 
+        // New: read stored oldest plugin (set once)
+        $stored_oldest_plugin = get_option( 'oldest_plugin' );
+
         $plugins_dates = [
             'fim_plugin'  => $form_mask_installed_date,
             'cfef_plugin' => $conditional_fields_installed_date,
@@ -265,13 +273,24 @@ class CFEF_Admin {
             'ccfef_plugin' => $country_code_installed_date,
         ];
 
-        $plugins_dates = array_filter($plugins_dates);
+        $plugins_dates = array_filter( $plugins_dates );
 
-        if (!empty($plugins_dates)) {
-            asort($plugins_dates);
-            $first_plugin = key($plugins_dates);
+        $install_by_plugin = get_option( 'country-code-install-by' );
+
+        if ( ! empty( $install_by_plugin ) ) {
+            $first_plugin = $install_by_plugin;
+        } elseif ( ! empty( $stored_oldest_plugin ) ) {
+            $first_plugin = $stored_oldest_plugin;
         } else {
-            $first_plugin = 'ccfef_plugin';
+            if ( ! empty( $plugins_dates ) ) {
+                asort( $plugins_dates );
+                $first_plugin = key( $plugins_dates );
+            } else {
+                $first_plugin = 'ccfef_plugin';
+            }
+
+            // Store it so it never changes on re-install
+            update_option( 'oldest_plugin', $first_plugin );
         }
 
 
