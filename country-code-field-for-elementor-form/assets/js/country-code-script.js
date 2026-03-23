@@ -455,11 +455,13 @@ if (countryList && countryList.classList.contains('iti__country-list')) {
                 };
                 if (iti.isValidNumber()) {
                     jQuery(inputTelElement).closest('.cfefp-intl-container').removeClass('elementor-error');
-                    const $visibleFlexErrors = this.elements.$form.find('.mask-error').filter(function() {
-                        return jQuery(this).css('display') === 'flex';
-                    });
+                    // const $visibleFlexErrors = this.elements.$form.find('.mask-error').filter(function() {
+                    //     return jQuery(this).css('display') === 'flex';
+                    // });
 
-                    if($visibleFlexErrors.length === 0){
+                    const maskInputs =this.elements.$form.find('.fme-mask-input');
+
+                    if(maskInputs.length === 0){
 
                         this.elements.$form[0].classList.remove('elementor-form-waiting');
                     }
