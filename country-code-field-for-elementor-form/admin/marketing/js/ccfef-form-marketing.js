@@ -214,34 +214,40 @@
     }
 
     if(typeof elementor !== 'undefined' && elementor) {
-        const callbackfunction = elementor.modules.controls.BaseData.extend({
-            onRender:(data)=>{
+        $(window).on('elementor:init', function () {
+            const RawHtmlControl = elementor.getControlView('raw_html');
 
+            const CfefRawHtmlControl = RawHtmlControl.extend({
+                onRender() {
+                    RawHtmlControl.prototype.onRender.apply(this, arguments);
 
-                if(!data.el) return;
+                    if (!this.el) {
+                        return;
+                    }
 
-                const customNotice=data.el.querySelector('.cool-form-wrp');
+                    const customNotice = this.el.querySelector('.cool-form-wrp');
 
-                if(!customNotice) return;
+                    if (!customNotice) {
+                        return;
+                    }
 
-                const installBtns=data.el.querySelectorAll('button.ccfef-install-plugin');
+                    const installBtns = this.el.querySelectorAll('button.ccfef-install-plugin');
 
-                if(installBtns.length === 0) return;
+                    if (installBtns.length === 0) {
+                        return;
+                    }
 
-
-                installBtns.forEach(btn=>{
-                    const installSlug=btn.dataset.plugin;
-
-                    btn.addEventListener('click',()=>{
-                        installPlugin(jQuery(btn),installSlug)
+                    installBtns.forEach((btn) => {
+                        const installSlug = btn.dataset.plugin;
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            installPlugin(jQuery(btn), installSlug);
+                        });
                     });
-                });
-            },
-        });
+                },
+            });
 
-        // Initialize when Elementor is ready
-        $(window).on('elementor:init', function () { 
-            elementor.addControlView('raw_html', callbackfunction);
+            elementor.addControlView('raw_html', CfefRawHtmlControl);
         });
     }else{
 

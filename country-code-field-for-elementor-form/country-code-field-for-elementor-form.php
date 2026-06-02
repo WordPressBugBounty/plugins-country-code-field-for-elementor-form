@@ -3,14 +3,14 @@
  * Plugin Name: Country Code For Elementor Form Telephone Field
  * Plugin URI:
  * Description:This plugin simplifies mobile number entry for users by guiding them to select their country code while entering their mobile number, ensuring accurate and properly formatted data submissions.
- * Version: 1.6.4
+ * Version: 1.7.0
  * Author:  Cool Plugins
  * Author URI: https://coolplugins.net/?utm_source=ccfef_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:country-code-field-for-elementor-form
- * Elementor tested up to: 4.0.0
- * Elementor Pro tested up to: 4.0.0
+ * Elementor tested up to: 4.1.1
+ * Elementor Pro tested up to: 4.1.0
  *
  * @package ccfef
  */
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 if ( ! defined( 'CCFEF_VERSION' ) ) {
-	define( 'CCFEF_VERSION', '1.6.4' );
+	define( 'CCFEF_VERSION', '1.7.0' );
 }
 /*** Defined constant for later use */
 define( 'CCFEF_FILE', __FILE__ );
@@ -29,6 +29,8 @@ define( 'CCFEF_PLUGIN_BASE', plugin_basename( CCFEF_FILE ) );
 define( 'CCFEF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'CCFEF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('CCFEF_FEEDBACK_URL', 'https://feedback.coolplugins.net/');
+define('CCFEF_MIN_ELEMENTOR_ATOMIC_FORM_VERSION', '4.0');
+
 
 
 
@@ -241,9 +243,99 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 
 				include CCFEF_PLUGIN_DIR . 'includes/register/class-ccfef-country-code-register.php';
 				CFEFP_COUNTRY_FIELD_REGISTER::get_instance();
+
+				if ( is_plugin_active( 'elementor-pro/elementor-pro.php' ) || is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+					// After `elementor/init`, core services (e.g. experiments) are initialized; on `elementor/loaded` they are often still null.
+					if ( did_action( 'elementor/init' ) ) {
+						$this->load_atomic_form_addon();
+					} else {
+						add_action( 'elementor/init', array( $this, 'load_atomic_form_addon' ), 20 );
+					}
+				}
+
 			}
 
 		}
+
+		public function load_atomic_form_addon() {
+			if ( ! is_plugin_active( 'elementor-pro/elementor-pro.php' ) && ! is_plugin_active( 'pro-elements/pro-elements.php' ) ) {
+				return;
+			}
+	
+			if ( ! did_action( 'elementor/init' ) || ! class_exists( '\Elementor\Plugin' ) ) {
+				return;
+			}
+
+			if ( ! self::is_elementor_atomic_form_supported() ) {
+				if ( is_admin()) {
+					add_action( 'admin_notices', array( $this, 'admin_notice_elementor_atomic_form_version' ) );
+				}
+				return;
+			}
+	
+			$elementor = \Elementor\Plugin::$instance;
+			if ( ! $elementor ) {
+				return;
+			}
+	
+			$experiments = isset( $elementor->experiments ) ? $elementor->experiments : null;
+			if ( ! self::are_elementor_atomic_form_experiments_active( $experiments ) ) {
+				return;
+			}
+
+			require_once CCFEF_PLUGIN_DIR . 'includes/atomic-form-addon-loader.php';
+			\CCFEF\Includes\Atomic_Form_Addon_Loader::get_instance();
+	
+		}
+
+		/**
+		 * Atomic Form extensions require Elementor 4.0+ (matches Elementor Pro atomic-form module).
+		 */
+		public static function is_elementor_atomic_form_supported(): bool {
+			return defined( 'ELEMENTOR_VERSION' )
+				&& version_compare( ELEMENTOR_VERSION, CCFEF_MIN_ELEMENTOR_ATOMIC_FORM_VERSION, '>=' );
+		}
+	
+		/**
+			 * @param mixed $experiments \Elementor\Core\Experiments\Manager|null.
+			 */
+			private static function are_elementor_atomic_form_experiments_active( $experiments ): bool {
+
+				if ( ! self::is_elementor_atomic_form_supported() ) {
+					return false;
+				}
+
+				if ( ! $experiments || ! is_object( $experiments ) || ! method_exists( $experiments, 'is_feature_active' ) ) {
+					return false;
+				}
+	
+				return $experiments->is_feature_active( 'e_atomic_elements' )
+					&& $experiments->is_feature_active( 'e_pro_atomic_form' );
+			}
+
+
+			public function admin_notice_elementor_atomic_form_version() {
+				if ( ! current_user_can( 'update_plugins' ) ) {
+					return;
+				}
+		
+				$file_path = 'elementor/elementor.php';
+				$upgrade_link = wp_nonce_url(
+					self_admin_url( 'update.php?action=upgrade-plugin&plugin=' ) . $file_path,
+					'upgrade-plugin_' . $file_path
+				);
+		
+				printf(
+					'<div class="notice notice-warning is-dismissible"><p><strong>%1$s</strong> %2$s <a href="%3$s">%4$s</a></p></div>',
+					esc_html__( 'Country Code For Elementor Form Telephone Field:', 'country-code-field-for-elementor-form' ),
+					esc_html__(
+						'Atomic Form extensions require Elementor 4.0 or newer. Update Elementor to use this feature.',
+						'country-code-field-for-elementor-form'
+					),
+					esc_url( $upgrade_link ),
+					esc_html__( 'Update Elementor', 'country-code-field-for-elementor-form' )
+				);
+			}
 
 		/**
 		 * Function used to deactivate the plugin if Elementor Pro does not exist
@@ -260,21 +352,6 @@ if ( ! class_exists( 'Country_Code_Field_For_Elementor_Form' ) ) {
 			// If neither plugin is active, show an admin notice.
 			add_action('admin_notices', array($this, 'admin_notice_missing_main_plugin'));
 			return false;
-		}
-
-
-	
-		/**
-		 * Include country field add-on register file
-		 */
-		public function cfefp_load_add_on() {
-
-			if(get_option('country_code', true)){
-
-				include CCFEF_PLUGIN_DIR . 'includes/register/class-ccfef-country-code-register.php';
-				CFEFP_COUNTRY_FIELD_REGISTER::get_instance( self::$instance);
-			}
-
 		}
 
 		/**

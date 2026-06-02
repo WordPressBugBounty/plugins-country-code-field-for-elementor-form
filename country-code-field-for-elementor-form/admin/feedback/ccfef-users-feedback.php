@@ -236,8 +236,8 @@ class ccfef_feedback {
 				array(
 					'timeout' => 30,
 					'body'    => array(
-						'server_info' => serialize($this->cfef_get_user_info()['server_info']),
-                        'extra_details' => serialize($this->cfef_get_user_info()['extra_details']),
+						'server_info' => wp_json_encode($this->cfef_get_user_info()['server_info']),
+                        'extra_details' => wp_json_encode($this->cfef_get_user_info()['extra_details']),
                         'plugin_initial'  => isset($plugin_initial) ? sanitize_text_field($plugin_initial) : 'N/A',
 						'plugin_version' => sanitize_text_field($this->plugin_version),
 						'plugin_name'    => sanitize_text_field($this->plugin_name),

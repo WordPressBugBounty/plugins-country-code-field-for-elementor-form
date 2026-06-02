@@ -510,7 +510,7 @@ $input_form_mask_features = array(
                                             data-init="<?php echo esc_attr($data_init); ?>"
                                             <?php endif; ?>
                                             <?php endif; ?>
-                                            title="<?php echo !$is_condtional_field_active ? 'Requires Conditional plugin to be activated' : ''; ?>">
+                                            title="<?php echo esc_attr(!$is_condtional_field_active ? 'Requires Conditional plugin to be activated' : ''); ?>">
                                             <div class="cfkef-form-element-info">
                                                 <img src="<?php echo esc_url($element['icon']) ?>" alt="Color Field">
                                                 <h4>
@@ -711,7 +711,7 @@ $input_form_mask_features = array(
                                             data-init="<?php echo esc_attr($data_init); ?>"
                                             <?php endif; ?>
                                             <?php endif; ?>
-                                            title="<?php echo !$is_country_field_active ? 'Requires Country Code Field plugin to be install' : ''; ?>">
+                                            title="<?php echo esc_attr(!$is_country_field_active ? 'Requires Country Code Field plugin to be install' : ''); ?>">
                                             <div class="cfkef-form-element-info">
                                                 <img src="<?php echo esc_url($element['icon']) ?>" alt="Color Field">
                                                 <h4>
@@ -1028,7 +1028,7 @@ $input_form_mask_features = array(
                                                 data-init="<?php echo esc_attr($data_init); ?>"
                                                 <?php endif; ?>
                                                 <?php endif; ?>
-                                                title="<?php echo !$is_form_mask_active ? 'Requires Form Mask plugin to be activated' : ''; ?>">
+                                                title="<?php echo esc_attr(!$is_form_mask_active ? 'Requires Form Mask plugin to be activated' : ''); ?>">
                                                 <div class="cfkef-form-element-info">
                                                     <img src="<?php echo esc_url($element['icon']) ?>" alt="Color Field">
                                                     <h4>

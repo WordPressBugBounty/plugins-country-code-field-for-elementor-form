@@ -78,7 +78,7 @@ class CPFM_Feedback_Notice {
  
         $screen         = get_current_screen();
         //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $current_page   = isset($_GET['page'])? sanitize_key($_GET['page']):'';
+        $current_page   = isset($_GET['page'])? sanitize_key(wp_unslash($_GET['page'])):'';
     
         // Gather all unique pages from registered notices
         $allowed_pages = [];
@@ -179,7 +179,7 @@ class CPFM_Feedback_Notice {
         //phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $screen         = get_current_screen();
         //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $current_page   = isset($_GET['page']) ? sanitize_key($_GET['page']) : '';
+        $current_page   = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
        
         $unread_count   = 0;
