@@ -5,7 +5,7 @@ Tags: country code, phone field, elementor form, elementor, elementor form build
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.2
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Elementor tested up to: 4.1.1
@@ -185,6 +185,9 @@ Please report security bugs found in the source code of the Country Code For Ele
 - [Cool FormKit Documentation](https://docs.coolplugins.net/plugin/cool-formkit-for-elementor-form/?utm_source=ccfef_plugin&utm_medium=readme&utm_campaign=docs&utm_content=installation)
 
 == Changelog ==
+
+= 1.7.2 | Jun 16, 2026 =
+* Fixed: Bug fixes.
 
 = 1.7.1 | Jun 16, 2026 =
 * Improved: Cleaned up the notice registration logic for better readability.
