@@ -43,24 +43,6 @@ else if ( ! empty( $stored_oldest_plugin ) ) {
     update_option('oldest_plugin', $first_plugin);
 }
 
-function cfkef_block_sql_patterns($input) {
-    $sql_keywords = [
-        'SELECT', 'INSERT', 'UPDATE', 'DELETE', 'DROP', 'UNION', 'OUTFILE', 'OR ', 'AND ', '--', '#', '/*', '*/'
-    ];
-
-    foreach ($sql_keywords as $keyword) {
-        if (stripos($input, $keyword) !== false) {
-            return ''; // If SQL pattern is detected, return an empty string
-        }
-    }
-
-    return $input;
-}
-
-function cfkef_sanitize_sql_input($input) {
-    $input = preg_replace('/[\'"=;#()\-]/', '', $input); // Remove SQL special characters
-    return cfkef_block_sql_patterns($input);
-}
 
 //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound	
 function cfef_handle_unchecked_checkbox() {
@@ -199,14 +181,21 @@ function cfef_handle_unchecked_checkbox() {
 
 //phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound	
 function handle_form_submit() {
+    $pattern   = '/(<script|<\/script>|onerror=|onload=|eval\(|javascript:|SELECT |INSERT |DELETE |DROP |UPDATE |UNION )/i';
+    $skip_keys = array( 'cool_formkit_nonce', '_wp_http_referer', 'submit' );
 
-    // Security check
-    $pattern = "/(<script|<\/script>|onerror=|onload=|eval\(|javascript:|SELECT |INSERT |DELETE |DROP |UPDATE |UNION )/i";
+    // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified before this runs.
+    foreach ( $_POST as $key => $value ) {
+        if ( in_array( $key, $skip_keys, true ) || ! is_string( $value ) ) {
+            continue;
+        }
 
+        if ( preg_match( $pattern, wp_unslash( $value ) ) ) {
+            return false;
+        }
+    }
 
     return true;
-
-
 }
 
 // Save API keys when the form is submitted

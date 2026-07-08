@@ -1,3 +1,12 @@
+:root,
+.cfkef-wrapper,
+.cfk-wrapper {
+  --cfk-primary: #3f415e;
+  --cfk-accent: #fb5fab;
+  --cfk-dark: #323348;
+  --cfk-card-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+}
+
 /* Submit Button */
 .cfkef-submit-button {
   display: flex;
@@ -35,18 +44,6 @@
   gap: 10px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.pro-plugin-buy p{
-  margin: 8px 0px !important;
-}
-
-.no-pro-buy-btn{
-  margin-left: 10px !important;
-}
-
-.pro-plugin-buy-buttons-con{
-  margin-bottom: 8px;
 }
 
 /* Updated CSS for Toggle Switch */
@@ -89,7 +86,7 @@
 }
 
 input:checked + .cfkef-slider {
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
 }
 
 input:checked + .cfkef-slider::before {
@@ -160,7 +157,7 @@ input.cfkef-element-toggle:disabled::before {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
 }
 
 .cfkef-license-box .wrapper-body,
@@ -195,7 +192,7 @@ input.cfkef-element-toggle:disabled::before {
   border: 1px solid #ddd;
   border-radius: 8px;
   max-width: 660px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -209,7 +206,7 @@ input.cfkef-element-toggle:disabled::before {
 .cfkef-form-element-wrapper .wrapper-header,
 .cfk-box .wrapper-header {
   padding: 1px 20px;
-  background-color: #3f415e;
+  background-color: var(--cfk-primary);
   border-radius: 5px 5px 0px 0px;
 }
 
@@ -273,10 +270,6 @@ input.cfkef-element-toggle:disabled::before {
 .cfkef-license-box .wrapper-header .cfkef-save-controls span {
   color: white;
   font-weight: bold;
-}
-
-.cfkef-el-license-active-btn {
-  text-align: right;
 }
 
 .cfkef-license-form .notice.notice-error.is-dismissible {
@@ -353,7 +346,7 @@ input.cfkef-element-toggle:disabled::before {
   border-radius: 8px;
   padding: 20px;
   width: calc(50% - 10px);
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -464,70 +457,6 @@ input.cfkef-element-toggle:disabled::before {
 
 
 
-.cfk-f-info p {
-  margin: 0;
-  padding: 0;
-}
-
-.cfk-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-
-a.cfk-feature {
-  width: calc(50% - 10px);
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #333;
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-  transition: 0.4s;
-  position: relative;
-}
-
-
-
-a.cfk-feature:hover {
-  border-color: #838383;
-  transform: scale(1.025);
-  color: #333;
-}
-
-a.cfk-feature img {
-  width: 100px;
-  height: auto;
-}
-
-a.cfk-feature.coming-soon:after,
-a.cfk-feature.available:after {
-  padding: 1px 4px;
-  border-radius: 0 10px;
-  position: absolute;
-  top: 1px;
-  right: 1px;
-}
-
-a.cfk-feature.coming-soon:after {
-  content: "Coming Soon...";
-  background-color: #e1e1e1;
-  color: #4d544d;
-  font-size: 0.9em;
-}
-
-a.cfk-feature.available:after {
-  content: "✓";
-  background-color: #c9f3cf;
-  color: #005e00;
-  font-size: 1.2em;
-}
-
-
-
 
 
 a.cfk-box.review {
@@ -595,7 +524,7 @@ a.cfk-box.review:before {
   font-size: 10px;
   text-transform: uppercase;
   color: #fff;
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
   padding: 2px 6px;
   border-radius: 4px;
   position: absolute;
@@ -613,7 +542,7 @@ a.cfk-box.review:before {
 }
 
 .cfkef-label-updated {
-  background-color: #3f415e;
+  background-color: var(--cfk-primary);
 }
 
 .cfkef-wrapper {
@@ -647,8 +576,8 @@ body.elementor_page_cfkef-entries {
 
 .cfkef-wrapper .button {
   padding: 10px 14px;
-  background-color: #3f415e;
-  border: 1px solid #323348;
+  background-color: var(--cfk-primary);
+  border: 1px solid var(--cfk-dark);
   box-shadow: 1px 2px 6px -4px rgba(56, 60, 96, 0.977);
   color: #ffffff;
   font-weight: 500;
@@ -657,12 +586,12 @@ body.elementor_page_cfkef-entries {
   font-size: 14px;
   line-height: 14px;
   align-self: center;
-  text-shadow: 1px 1px 1px #323348;
+  text-shadow: 1px 1px 1px var(--cfk-dark);
 }
 .cfkef-wrapper .button:focus {
-  box-shadow: 0 0 2px 2px #323348;
+  box-shadow: 0 0 2px 2px var(--cfk-dark);
   outline: none;
-  border: 1px solid #323348;
+  border: 1px solid var(--cfk-dark);
   background: #0e1136;
   color: #fff;
   text-shadow: none;
@@ -676,13 +605,13 @@ body.elementor_page_cfkef-entries {
 }
 .cfkef-wrapper .button:hover {
   box-shadow: 1px 2px 6px -4px rgb(30, 31, 48);
-  border: 1px solid #323348;
+  border: 1px solid var(--cfk-dark);
   background: #0e1136;
   color: #fff;
   text-shadow: none;
 }
 .wrapper-header .cfkef-save-all .cfkef-save-controls .button {
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
   border: 1px solid #fd79b9;
   text-shadow: 1px 1px 1px #fc63ad;
 }
@@ -733,7 +662,7 @@ body.elementor_page_cfkef-entries {
   border: 1px solid #dcd0d6;
 }
 .cfkef-header-logo .button {
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
   border: 1px solid #fd79b9;
   text-shadow: 1px 1px 1px #fc63ad;
 }
@@ -787,7 +716,7 @@ a.button-primary.upgrade-pro-btn {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   margin-bottom: 20px;
 }
 
@@ -832,8 +761,7 @@ a.button-primary.upgrade-pro-btn {
   }
 }
 /* Save All Button Styles */
-.cfkef-save-all,
-.cfkef-save-bottom {
+.cfkef-save-all {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -852,50 +780,6 @@ a.button-primary.upgrade-pro-btn {
   gap: 20px;
 }
 
-/* Review Request Styles */
-.cfkef-review-request {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
-  margin-top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cfkef-review-left {
-  flex: 1;
-}
-
-.cfkef-review-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.cfkef-sidebar-link-group .cfkef-review-right {
-  flex-direction: row-reverse;
-}
-
-.cfkef-review-request h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.cfkef-review-request p {
-  margin: 0;
-}
-
-.cfkef-stars {
-  display: flex;
-  gap: 5px;
-  font-size: 24px;
-  color: #ffd700;
-}
-
 /* Settings Page */
 .cfkef-license-box,
 .cfkef-settings-box {
@@ -903,7 +787,7 @@ a.button-primary.upgrade-pro-btn {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -927,7 +811,7 @@ span.cfkef-pro-feature a {
   padding: 10px;
   border-radius: 5px;
   margin-top: 10px;
-  border-left: 4px solid #fb5fab;
+  border-left: 4px solid var(--cfk-accent);
 }
 .cfkef-license-upgrade-box a {
   color: #0073aa;
@@ -946,15 +830,6 @@ span.cfkef-pro-feature a {
   color: #555;
 }
 
-.cfk-logo {
-  display: flex;
-  align-items: center;
-}
-
-.cfk-logo img {
-  max-height: 40px;
-}
-
 .cfk-buttons {
   display: flex;
   gap: 15px;
@@ -966,7 +841,7 @@ span.cfkef-pro-feature a {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   display: flex;
   flex-direction: column;
 }
@@ -1026,26 +901,6 @@ span.cfkef-pro-feature a {
   width: calc(33.33% - 16px);
 }
 
-.icon-check,
-.icon-cross {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: white;
-}
-
-.icon-check {
-  background-color: #4caf50;
-}
-
-.icon-cross {
-  background-color: #f44336;
-}
-
 .cfk-p-name {
   gap: 5px;
   display: flex;
@@ -1092,15 +947,14 @@ span.cfkef-pro-feature a {
 .cfk-p-feature {
   width: calc(50% - 5px);
   border: 1px solid #ddd;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 5px;
   word-break: break-word;
   border-radius: 8px;
   padding: 20px 10px;
-  box-shadow: 0px 2px 2px rgb(150 150 150 / 12%);
+  box-shadow: var(--cfk-card-shadow);
 }
 
 .cfk-p-feature.pro span:after {
@@ -1153,7 +1007,7 @@ span.cfkef-pro-feature a {
 }
 
 .cfk-header-logo .button {
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
   border: 1px solid #fd79b9;
   text-shadow: 1px 1px 1px #fc63ad;
 }
@@ -1162,14 +1016,6 @@ span.cfkef-pro-feature a {
   display: flex;
   gap: 15px;
 }
-
-a.button-primary.upgrade-pro-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
 
 .cfk-wrapper * {
   box-sizing: border-box;
@@ -1187,8 +1033,8 @@ a.button-primary.upgrade-pro-btn {
 
 .cfk-wrapper .button {
   padding: 10px 14px;
-  background-color: #3f415e;
-  border: 1px solid #323348;
+  background-color: var(--cfk-primary);
+  border: 1px solid var(--cfk-dark);
   box-shadow: 1px 2px 6px -4px rgba(56, 60, 96, 0.977);
   color: #ffffff;
   font-weight: 500;
@@ -1197,13 +1043,13 @@ a.button-primary.upgrade-pro-btn {
   font-size: 14px;
   line-height: 14px;
   align-self: center;
-  text-shadow: 1px 1px 1px #323348;
+  text-shadow: 1px 1px 1px var(--cfk-dark);
 }
 
 .cfk-wrapper .button:focus {
-  box-shadow: 0 0 2px 2px #323348;
+  box-shadow: 0 0 2px 2px var(--cfk-dark);
   outline: none;
-  border: 1px solid #323348;
+  border: 1px solid var(--cfk-dark);
   background: #0e1136;
   color: #fff;
   text-shadow: none;
@@ -1219,7 +1065,7 @@ a.button-primary.upgrade-pro-btn {
 
 .cfk-wrapper .button:hover {
   box-shadow: 1px 2px 6px -4px rgb(30, 31, 48);
-  border: 1px solid #323348;
+  border: 1px solid var(--cfk-dark);
   background: #0e1136;
   color: #fff;
   text-shadow: none;
@@ -1321,7 +1167,7 @@ td.cool-formkit-table-td.usage-share-data {
   top: -10px;
   right: 0px;
   transform: translateY(-100%);
-  background: #3f415e;
+  background: var(--cfk-primary);
   color: #fff;
   padding: 10px;
   font-size: 12px;
@@ -1343,7 +1189,7 @@ td.cool-formkit-table-td.usage-share-data {
   right: 15px;
   border-width: 6px;
   border-style: solid;
-  border-color: #3f415e transparent transparent transparent;
+  border-color: var(--cfk-primary) transparent transparent transparent;
 }
 
 /* Shake Effect On save buttons*/
@@ -1369,14 +1215,10 @@ td.cool-formkit-table-td.usage-share-data {
   }
 }
 
-/* Dashboard tab styles For Entries Page*/
-.cfkef-dashboard-tabs {
-  margin-top: 80px;
-}
 .cfkef-activate-plugin-btn,
 .cfkef-install-plugin-btn {
   cursor: pointer;
-  background-color: #fb5fab;
+  background-color: var(--cfk-accent);
   color: white;
   border: none;
   padding: 5px 3px;
@@ -1516,10 +1358,6 @@ button#recaptcha-submit {
     .cfkef-save-controls,
     .cfk-box .wrapper-header .cfkef-save-all .cfkef-save-controls {
     flex-wrap: wrap;
-  }
-  .cfkef-review-request {
-    flex-wrap: wrap;
-    gap: 15px;
   }
 }
 

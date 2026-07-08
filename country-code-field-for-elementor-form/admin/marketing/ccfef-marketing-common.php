@@ -392,10 +392,9 @@ if (! class_exists('CCFEF_Marketing_Controllers')) {
 
 				'lgefep_mkt_country_notice',
 					array(
-						'name'            => 'ccfef_mkt_country_notice',
-						'type'            => \Elementor\Controls_Manager::SWITCHER,
-						'label'        => esc_html__('Use ACF Repeater', 'country-code-field-for-elementor-form'),
+						'name'         => 'ccfef_mkt_country_notice',
 						'type'         => \Elementor\Controls_Manager::SWITCHER,
+						'label'        => esc_html__('Use ACF Repeater', 'country-code-field-for-elementor-form'),
 						'label_on'     => esc_html__('Yes', 'country-code-field-for-elementor-form'),
 						'label_off'    => esc_html__('No', 'country-code-field-for-elementor-form'),
 
@@ -675,8 +674,6 @@ if (! class_exists('CCFEF_Marketing_Controllers')) {
 					);
 			}
 			
-			$marketing_notice_controls    = array();
-
 			$conditional_logic_controls   = array();
 
 

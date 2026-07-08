@@ -2,19 +2,13 @@
     --cfefp-intl-tel-button-height: 100%;
 }
 
-.elementor-field-group .cfefp-intl-container.iti{
+.elementor-field-group .cfefp-intl-container.iti,
+.ehp-form__field-group .cfefp-intl-container.iti {
     width: 100%;
 }
 
-.ehp-form__field-group .cfefp-intl-container.iti{
-    width: 100%;
-}
-
-.elementor-field-group .cfefp-intl-container.iti.elementor-error .iti__country-container{
-   bottom: 23px;
-}
-
-.ehp-form__field-group .cfefp-intl-container.iti.elementor-error .iti__country-container{
+.elementor-field-group .cfefp-intl-container.iti.elementor-error .iti__country-container,
+.ehp-form__field-group .cfefp-intl-container.iti.elementor-error .iti__country-container {
    bottom: 23px;
 }
 

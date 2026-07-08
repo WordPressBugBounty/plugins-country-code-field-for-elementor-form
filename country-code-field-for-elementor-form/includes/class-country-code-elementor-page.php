@@ -24,7 +24,7 @@ class Country_Code_Elementor_Page {
         add_action('admin_print_scripts', [$this, 'hide_unrelated_notices']);
 
 
-        $this->plugin_name = 'form-masks-for-elementor';
+        $this->plugin_name = 'country-code-field-for-elementor-form';
 
         $this->version = CCFEF_VERSION;
 

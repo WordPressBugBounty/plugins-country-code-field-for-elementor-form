@@ -70,13 +70,19 @@ class Sheet_HelloPlus_Action extends Action_Base
      * Export handler
      */
     public function on_export($element) {
+        /**
+         * Export handler
+         */
     }
 
     /**
      * Run on submit
      */
     public function run($record, $ajax_handler) {
-        
+
+        /**
+         * Handle submission data
+         */
     }
 
     

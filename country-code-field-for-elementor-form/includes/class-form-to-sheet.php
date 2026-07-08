@@ -21,8 +21,6 @@ if (
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
     abstract class Form_to_Sheet_Action extends \ElementorPro\Modules\Forms\Classes\Action_Base
     {
-        protected $platform = 'both';
-        protected $hello_plus_active = true;
     }
 } elseif (class_exists('ElementorPro\Modules\Forms\Classes\Action_Base')) {
 
@@ -30,8 +28,6 @@ if (
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
     abstract class Form_to_Sheet_Action extends \ElementorPro\Modules\Forms\Classes\Action_Base
     {
-        protected $platform = 'elementor';
-        protected $hello_plus_active = false;
     }
 } elseif (class_exists('HelloPlus\Modules\Forms\Classes\Action_Base')) {
 
@@ -39,8 +35,6 @@ if (
     // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound
     abstract class Form_to_Sheet_Action extends \HelloPlus\Modules\Forms\Classes\Action_Base
     {
-        protected $platform = 'hello_plus';
-        protected $hello_plus_active = true;
     }
 } else {
     // Neither plugin active
@@ -133,5 +127,8 @@ class Sheet_Action extends Form_To_Sheet_Helper
      */
     public function run($record, $ajax_handler)
     {
+        /**
+         * Handle submission data
+         */
     }
 }

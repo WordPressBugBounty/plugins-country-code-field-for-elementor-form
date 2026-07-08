@@ -18,6 +18,9 @@ if (! defined('ABSPATH')) exit;
 
 require_once CCFEF_PLUGIN_DIR . 'includes/atomic-form/field-controls-definition/country-code-input-definition.php';
 
+if ( ! class_exists( AtomicFormInput::class ) ) {
+	return;
+}
 
 class Input extends AtomicFormInput
 {

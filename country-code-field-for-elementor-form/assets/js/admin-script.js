@@ -1,15 +1,6 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const elementToggles = document.querySelectorAll('.cfkef-element-toggle');
-
-
-    elementToggles.forEach(function (toggle) {
-
-
-            isChecked = toggle.checked;
-    });
-        
 
     const apiSelector = document.querySelector('#api-selector select');
     const ipapiRow    = document.getElementById('ipapi-row');
@@ -71,70 +62,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function buttonShakeEffectHandler() {
 	const wrappers = document.querySelectorAll('.cfk-plugins');
-
+	const shakeInputValues = [
+		'conditional_logic',
+		'country_code',
+		'form_input_mask',
+		'input_mask',
+	];
 
 	wrappers.forEach(wrapper => {
-		const headerButton = wrapper.querySelector('.cfk-buttons .button-primary');
 		const bodyInputs = wrapper.querySelectorAll('.wrapper-body input[type="checkbox"]');
 
-
-
-		if (!headerButton || bodyInputs.length === 0) return;
-
-		const input1 = wrapper.querySelector('input[value="conditional_logic"]');
-		const input2 = wrapper.querySelector('input[value="country_code"]');
-		const input3 = wrapper.querySelector('input[value="form_input_mask"]');
-		const input4 = wrapper.querySelector('input[value="input_mask"]');
-
-
-
-
-
-		function triggerShake() {
-			headerButton.classList.add('shake-effect');
-		}
-
-		
+		if (bodyInputs.length === 0) return;
 
 		bodyInputs.forEach(input => {
-
 			input.addEventListener('change', function () {
-
-
-				if (input1 && input.value === 'conditional_logic') {
-
-
-					if(input1.checked || !input1.checked){
-
-						jQuery('input[value="conditional_logic"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-				
-				else if (input2 && input.value === 'country_code') {
-
-					if(input2.checked || !input2.checked){
-
-						jQuery('input[value="country_code"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
+				if (!shakeInputValues.includes(input.value)) {
+					return;
 				}
 
-				else if (input3 && input.value === 'form_input_mask') {
-
-					if(input3.checked || !input3.checked){
-
-						jQuery('input[value="form_input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-
-				else if (input4 && input.value === 'input_mask') {
-
-					if(input4.checked || !input4.checked){
-
-						jQuery('input[value="input_mask"]').parent().parent().parent().parent().parent().find(".button-primary").addClass('shake-effect');
-					}
-				}
-
-				
+				jQuery(input).closest('.cfk-plugins').find('.button-primary').addClass('shake-effect');
 			});
 		});
 	});
@@ -195,12 +141,36 @@ function handleElementCardTooltip() {
 		if (!e.target.closest('.cfkef-form-element-card')) {
 			document.querySelectorAll('.cfkef-tooltip').forEach(tip => {
 				tip.style.display = 'none';
-				tip_message  = tip.textContent.replace('Activate Plugin', '');
+				const tip_message = tip.textContent.replace('Activate Plugin', '');
 				tip.innerHTML = tip_message;
 			});
 		}
 	});
 }
+
+function activatePlugin(init, onDone) {
+	jQuery.ajax({
+		type: 'POST',
+		url: cfkef_plugin_vars.ajaxurl,
+		data: {
+			action: 'cfkef_plugin_activate',
+			init: init,
+			security: cfkef_plugin_vars.nonce
+		},
+		success: function () {
+			window.location.reload();
+		},
+		error: function () {
+			alert('Activation failed.');
+		},
+		complete: function () {
+			if (typeof onDone === 'function') {
+				onDone();
+			}
+		}
+	});
+}
+
 function handleTooltipButtonAction(){
 	document.addEventListener('click', function (e) {
 		let ajaxLoader = jQuery('#cfkef-loader');
@@ -223,26 +193,8 @@ function handleTooltipButtonAction(){
 				},
 				success: function (res) {
 					if (res.success) {
-						// After successful install, activate the plugin
-						jQuery.ajax({
-							type: 'POST',
-							url: cfkef_plugin_vars.ajaxurl,
-							data: {
-								action: 'cfkef_plugin_activate',
-								init: init,
-								security: cfkef_plugin_vars.nonce
-							},
-							success: function (res) {
-								if (res) {
-									window.location.reload();
-								}
-							},
-							error: function () {
-								alert('Activation failed.');
-							},
-							complete: function () {
-								ajaxLoader.hide();
-							}
+						activatePlugin(init, function () {
+							ajaxLoader.hide();
 						});
 					} else {
 						alert('Installation error: ' + res.data?.message);
@@ -262,23 +214,8 @@ function handleTooltipButtonAction(){
 			const init = e.target.dataset.init;
 
 			ajaxLoader.show();
-			jQuery.ajax({
-				type: 'POST',
-				url: cfkef_plugin_vars.ajaxurl,
-				data: {
-					action: 'cfkef_plugin_activate',
-					init: init,
-					security: cfkef_plugin_vars.nonce
-				},
-				success: function (res) {
-					window.location.reload()
-				},
-				error: function () {
-					alert('Activation failed.');
-				},
-				complete: function () {
-					ajaxLoader.hide();
-				}
+			activatePlugin(init, function () {
+				ajaxLoader.hide();
 			});
 		}
 	});

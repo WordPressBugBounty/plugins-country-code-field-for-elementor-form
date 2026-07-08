@@ -2,7 +2,6 @@
 
 namespace CCFEF\Includes;
 
-use CCFEF\Includes\AtomicForm\Input\Input;
 use Elementor\Widgets_Manager;
 use Elementor\Plugin as Elementor_Plugin;
 
@@ -103,11 +102,38 @@ class Atomic_Form_Addon_Loader
 
         if ($this->is_field_enabled('country_code')) {
 
-            $widgets_manager->unregister('e-form-input');
-
-            require_once CCFEF_PLUGIN_DIR . 'includes/atomic-form/input/input.php';
-            $widgets_manager->register(new Input());
+            $this->register_atomic_form_widget(
+                $widgets_manager,
+                'e-form-input',
+                \ElementorPro\Modules\AtomicForm\Input\Input::class,
+                CCFEF_PLUGIN_DIR . 'includes/atomic-form/input/input.php',
+                \CCFEF\Includes\AtomicForm\Input\Input::class
+            );
         }
+    }
+
+    /**
+     * Replace an Elementor Pro atomic form widget when its base class is available.
+     */
+    private function register_atomic_form_widget(
+        Widgets_Manager $widgets_manager,
+        string $widget_type,
+        string $parent_class,
+        string $file,
+        string $child_class
+    ): void {
+        if ( ! class_exists( $parent_class ) ) {
+            return;
+        }
+
+        $widgets_manager->unregister( $widget_type );
+        require_once $file;
+
+        if ( ! class_exists( $child_class ) ) {
+            return;
+        }
+
+        $widgets_manager->register( new $child_class() );
     }
 
     private function ensure_atomic_form_country_code_assets_registered()

@@ -17,7 +17,7 @@ $popular_elements = array('range_slider');
 $updated_elements = array('country_code');
 
 
-$plugin_list = get_plugins();
+$all_plugins = get_plugins();
 
 $form_mask_installed_date = get_option('fme-installDate');
 $conditional_fields_installed_date = get_option('cfef-installDate');
@@ -376,7 +376,6 @@ $input_form_mask_features = array(
                                 $plugin_file = 'conditional-fields-for-elementor-form/class-conditional-fields-for-elementor-form.php';
 
                                 $is_condtional_field_active = defined('CFEF_VERSION');
-                                $all_plugins = get_plugins();
                                 $is_conditional_field_installed = isset($all_plugins[$plugin_file]);
 
                                 $card_class = '';
@@ -582,7 +581,6 @@ $input_form_mask_features = array(
                                 $plugin_file = 'country-code-field-for-elementor-form/country-code-field-for-elementor-form.php';
 
                                 $is_country_field_active = defined('CCFEF_VERSION');
-                                $all_plugins = get_plugins();
                                 $is_country_field_installed = isset($all_plugins[$plugin_file]);
 
                                 $card_class = '';
@@ -770,7 +768,6 @@ $input_form_mask_features = array(
                 $plugin_file = 'mask-form-elementor/index.php';
 
                 $is_input_form_mask_active = defined('MFE_VERSION');
-                $all_plugins = get_plugins();
                 $is_input_form_mask_installed = isset($all_plugins[$plugin_file]);
 
                 $card_class = '';
@@ -896,7 +893,6 @@ $input_form_mask_features = array(
                                     $plugin_file = 'form-masks-for-elementor/form-masks-for-elementor.php';
 
                                     $is_form_mask_active = defined('FME_VERSION');
-                                    $all_plugins = get_plugins();
                                     $is_form_mask_installed = isset($all_plugins[$plugin_file]);
 
                                     $card_class = '';
