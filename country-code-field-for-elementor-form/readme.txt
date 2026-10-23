@@ -3,13 +3,13 @@ Contributors: narinder-singh, satindersingh, coolplugins
 Donate link: https://donate.stripe.com/5kQdR92iBevO75WbPm6c00i
 Tags: country code, phone field, elementor form, elementor, elementor form builder
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.2
 Stable tag: 1.7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Elementor tested up to: 4.2.1
-Elementor Pro tested up to: 4.2.1
+Elementor tested up to: 4.2.4
+Elementor Pro tested up to: 4.2.3
 
 Add a country code dropdown with flags to Elementor form phone field for valid international numbers. Also works with Hello Plus form widget.
 
